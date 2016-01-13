@@ -11,14 +11,12 @@
 
 %Contribuições
 
-\section{Protein folding} \label{sec:psp}
-
+\section{Protein folding} \label{sec:proteinfolding}
 
 We will briefly recall some of the main biological concepts related to the protein folding problem that are relevant to our discussion.
 
 
-Proteins are macromolecules made out of  twenty different amino acids, also referred to as residues. An amino acid has a peptide backbone and a distinctive side chain group. The peptide bond is defined by an amino group and a carboxyl group connected to an alpha carbon to which a hydrogen and side chain group are attached.
-
+Proteins are macromolecules made out of twenty different amino acids, also referred to as residues. An amino acid has a peptide backbone and a distinctive side chain group. The peptide bond is defined by an amino group and a carboxyl group connected to an alpha carbon to which a hydrogen and side chain group are attached.
 
 Amino acids are combined to form sequences which are considered the primary structure of the peptides or proteins. The secondary structure is the locally ordered structure brought about via hydrogen bounding mainly within the peptide backbone. The most common secondary structure  elements in proteins are the alpha helix and the beta sheet. The tertiary structure is the global folding of a single polypeptide chain.
 
@@ -29,11 +27,10 @@ Under specific conditions, the protein sequence folds into a unique native 3-d s
 The achievement of the protein native structure is the result of the so-called protein folding process. The laws that govern protein folding are unknown. Therefore a number of ideas have emerged that try to answer this question: how do amino acid sequences specify proteins 3-d structure?
 
 
-There are two main approaches to protein folding, commonly referred as the ``classical'' and ``new'' views. The ``classical'' view considers folding as a defined sequence of states leading from the unfolded to the native state.  This sequence is called the pathway \cite{pande:1998}. In the  ``new'' view approach,   folding is seen as the progressive organization of an ensemble of partially folded structures  through which the protein passes on its way to the folded structure \cite{onuchic:2004}. This approach emphasizes the idea of each state being an ensemble of rapidly interconverting conformations. One of the main differences between both approaches is that the ``new'' view allows for a more heterogeneous transition state than the ``classical'' view, which concentrates on a single, well-defined folding pathway \cite{baker:2000}.
+There are two main approaches to protein folding, commonly referred as the ``classical'' and ``new'' views. The ``classical'' view considers folding as a defined sequence of states leading from the unfolded to the native state. This sequence is called the pathway \cite{pande:1998}. In the  ``new'' view approach, folding is seen as the progressive organization of an ensemble of partially folded structures through which the protein passes on its way to the folded structure \cite{onuchic:2004}. This approach emphasizes the idea of each state being an ensemble of rapidly inter-converting conformations. One of the main differences between both approaches is that the ``new'' view allows for a more heterogeneous transition state than the ``classical'' view, which concentrates on a single, well-defined folding pathway \cite{baker:2000}.
 
 
-Figure~\ref{fig:protviews}  shows one schematic representation of the ``classical'' (left) and  ``new'' (right) views of protein folding. In the figure, each possible protein configuration is represented as a circle, and arrows represent possible transitions between configurations. In both approaches, the native state (filled circle) is achieved when the energy is minimized.
-
+Figure~\ref{fig:protviews} shows one schematic representation of the ``classical'' (left) and  ``new'' (right) views of protein folding. In the figure, each possible protein configuration is represented as a circle, and arrows represent possible transitions between configurations. In both approaches, the native state (filled circle) is achieved when the energy is minimized.
 
 \begin{figure}[htb!]
 	\includegraphics[scale=.6]{figures/protviews.png}
@@ -47,6 +44,17 @@ Figure~\ref{fig:protviews}  shows one schematic representation of the ``classica
 
 
 %Mencionar abordagens multi-objetivo (referenciar trabalhos)
+
+
+SinglePointCrossover
+TwoPointsCrossover
+MultiPointCrossover (para crossovers)
+
+BitFlipMutation
+LoopMoveOperator
+LocalMoveOperator
+SegmentMutationOperator
+OppossiteMoveOperator (para mutacoes)
 
 
 \section{Multi-objective Optimization} \label{sec:optimization}
@@ -67,7 +75,7 @@ Multi-Objective Evolutionary Algorithms (MOEAS) are extensions of EAs to multi o
 The main characteristic of this algorithm is a strong elitism mechanism, classifying at each generation every solution in different fronts according with the non-dominance relation (line 15 of Algorithm \ref{alg:nsgaII}). After the classification, solutions from the first front, are non-dominated by any other solution. Solutions from the second front are dominated only by the solutions of the first front, and so on. For solutions of the same front, the algorithm uses a Crowding Distance operator to calculate how distant are the neighbors of a given solution (line 19 of Algorithm \ref{alg:nsgaII}). Solutions with high values of Crowding Distance have priority, because they will contribute more to the population's diversity. The binary tournament selects solutions from the small front with the higher values of Crowding Distance. A new population is generated using the crossover and mutation operators (line 25 of Algorithm \ref{alg:nsgaII}).
 
 
-\begin{algorithm}[h]
+\begin{algorithm}[htb]
 	\begin{algorithmic}[1]
 		\State{$N \gets$ Population Size}
 		\State{$T \gets$ Max evaluations}
@@ -123,7 +131,7 @@ F(x_i) = \sum_{x_j \in (P-x_i)} {-e^\frac{-I_{Hy}(x_j,x_i)}{k}}
 For the IBEA fitness calculation (Equation \ref{eq:ibea_fitness}), $k$ is a parameter commonly used with a value of 0.05. The value for $F(x_i)$ corresponds to a quality loss measure of the approximation to the Pareto front if the solution $x_i$ was removed of the population \cite{figueiredo2013algoritmo}, based on the value of the quality indicator $I_{Hy}$, in this case, the \textit{hypervolume}. Based on the fitness calculation described above, the basic IBEA algorithm consists in iteratively do the selection (line 10 of Algorithm \ref{alg:ibea}), crossover, mutation (line 11 of Algorithm \ref{alg:ibea}) and environment selection, removing the worst individual from the population and updating the values of fitness of the remaining individuals (lines 4 to 8 of Algorithm \ref{alg:ibea}).
 
 
-\begin{algorithm}[h]
+\begin{algorithm}[htb]
 	\begin{algorithmic}[1]
 	\State{$N \gets$ Population Size}
 	\State{$T \gets$ Max Evaluations}
@@ -182,6 +190,53 @@ For representing the chromosomes integer vectors were used whereas the genes spe
  
 
 
+<<<<<<< HEAD
+=======
+The proposed method consists in the application of the algorithms NSGAII and IBEA to the PSP problem using the relative representation applied to the HP model. The multi-objective optimization framework jMetal \cite{jMetal} was used, it presents implementation of the used MOEAs and a easy way to personalize them. To evaluate the generated solutions, a evaluation mechanism was implemented considering two objectives:
+
+
+\begin{enumerate}
+	\item Maximize the number of topological neighbors HH (main objective);
+	\item Minimize the maximum euclidean distance between residues (secondary objective).
+\end{enumerate}
+
+
+The first objective guide the search aiming find a solution that generates a structure where the energy value is minimum (maximizing the number of topological neighbors HH), this way, obtaining a structure closer of the native conformation of the protein. The second objective allows to differ solutions with the same value of energy but with different compression degrees. The more compact was the max value of euclidean distance, more compact will be the generated conformation.
+
+
+The chromosomes are represented by integer vectors where the genes specify which direction, related to the previous residue, the next one should be placed. The genes can assume one of three values 0, 1 and 2, where 0 means the next residue should be placed at right of the previous one, 1 means the next residue should be placed in front of the previous and 2 means the next residue should be placed at left of the previous one. The Figure \ref{fig_sim} demonstrate a example of a possible chromosome to a chain of 10 residues and its generated conformation.
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=2.5in]{figures/figure3.png}
+	\caption{Example of a conformation generated by a chromosome with relative representation.}
+	\label{fig_sim}
+\end{figure}
+
+
+The relative representation it is subject to the generation of infeasible solutions using the HP model. A solution is considered infeasible when a residue 'collides' with another already placed on the lattice. A simple mechanism for repairing these situations was developed, the code can be seen in the Algorithm \ref{algo:reparacao}.
+
+
+\begin{algorithm}[h]
+	Obtains the direction the next residue should be placed.\\
+	Verifies if this direction will cause collision.\\
+	If the a collision is identified, a new direction is used.\\
+	Repeat the step 2 and 3, until be possible to place the next residue, or if all directions were tested and cause collisions.\\
+	If was possible to place the next residue, the mechanism reached success, if not, the solution is considered infeasible and it will be penalized in the evaluation process.
+	\caption{Mechanism to repair infeasible solutions}
+	\label{algo:reparacao}
+\end{algorithm}
+
+
+This mechanism was implemented because in early experiments was observed that the number of infeasible solutions was too big. It is necessary mention that the even with the mechanism to repair solutions, there are still infeasible solutions because the mechanism can't always repair. Yet, infeasible solutions are penalized by subtracting the number of collisions to the quantity of topological neighbors.
+
+
+To evaluate and compare the performance of the multi-objective algorithms, quality indicators are commonly used. In this study was used the hypervolume indicator, which considers the volume of the search space dominated by the true front \cite{zitzler2003performance}. The high the hypervolume is, better the quality of the front found by one of the algorithms.
+
+
+%Proposta antiga vs proposta nova
+>>>>>>> e5e35c11bc20942989ff4097825a4c6a38eae9e0
 
 \section{Experiments}
 
