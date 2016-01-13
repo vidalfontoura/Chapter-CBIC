@@ -13,12 +13,10 @@
 
 \section{Protein folding} \label{sec:proteinfolding}
 
-
 We will briefly recall some of the main biological concepts related to the protein folding problem that are relevant to our discussion.
 
 
 Proteins are macromolecules made out of twenty different amino acids, also referred to as residues. An amino acid has a peptide backbone and a distinctive side chain group. The peptide bond is defined by an amino group and a carboxyl group connected to an alpha carbon to which a hydrogen and side chain group are attached.
-
 
 Amino acids are combined to form sequences which are considered the primary structure of the peptides or proteins. The secondary structure is the locally ordered structure brought about via hydrogen bounding mainly within the peptide backbone. The most common secondary structure  elements in proteins are the alpha helix and the beta sheet. The tertiary structure is the global folding of a single polypeptide chain.
 
@@ -33,7 +31,6 @@ There are two main approaches to protein folding, commonly referred as the ``cla
 
 
 Figure~\ref{fig:protviews} shows one schematic representation of the ``classical'' (left) and  ``new'' (right) views of protein folding. In the figure, each possible protein configuration is represented as a circle, and arrows represent possible transitions between configurations. In both approaches, the native state (filled circle) is achieved when the energy is minimized.
-
 
 \begin{figure}[htb!]
 	\includegraphics[scale=.6]{figures/protviews.png}
@@ -170,7 +167,6 @@ For the IBEA fitness calculation (Equation \ref{eq:ibea_fitness}), $k$ is a para
 
 \section{Proposed method}
 
-
 The proposed method consists in the application of the algorithms NSGAII and IBEA to the PSP problem using the relative representation applied to the HP model. The multi-objective optimization framework jMetal \cite{jMetal} was used, it presents implementation of the used MOEAs and a easy way to personalize them. To evaluate the generated solutions, a evaluation mechanism was implemented considering two objectives:
 
 
@@ -212,6 +208,7 @@ This mechanism was implemented because in early experiments was observed that th
 
 
 To evaluate and compare the performance of the multi-objective algorithms, quality indicators are commonly used. In this study was used the hypervolume indicator, which considers the volume of the search space dominated by the true front \cite{zitzler2003performance}. The high the hypervolume is, better the quality of the front found by one of the algorithms.
+
 
 %Proposta antiga vs proposta nova
 
