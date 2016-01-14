@@ -11,50 +11,48 @@
 
 %Contribuições
 
-\section{Protein folding} \label{sec:proteinfolding}
-
-We will briefly recall some of the main biological concepts related to the protein folding problem that are relevant to our discussion.
+\section{Protein Structure Prediction} \label{sec:proteinfolding}
 
 
-Proteins are macromolecules made out of twenty different amino acids, also referred to as residues. An amino acid has a peptide backbone and a distinctive side chain group. The peptide bond is defined by an amino group and a carboxyl group connected to an alpha carbon to which a hydrogen and side chain group are attached.
+Proteins are macromolecules made out of  twenty different amino acids, also referred to as residues. An amino acid has a peptide backbone and a distinctive side chain group. The peptide bond is defined by an amino group and a carboxyl group connected to an alpha carbon to which  a hydrogen and side chain group are attached.
 
-Amino acids are combined to form sequences which are considered the primary structure of the peptides or proteins. The secondary structure is the locally ordered structure brought about via hydrogen bounding mainly within the peptide backbone. The most common secondary structure  elements in proteins are the alpha helix and the beta sheet. The tertiary structure is the global folding of a single polypeptide chain.
-
+Amino acids are combined to form sequences which are considered the primary structure of the peptides or proteins. The secondary structure is the locally ordered structure brought about via hydrogen bounding mainly within the peptide backbone. The most common secondary structure elements in proteins are the alpha helix and the beta sheet. The tertiary structure is the global folding of a single polypeptide chain.
 
 Under specific conditions, the protein sequence folds into a unique native 3-d structure. Each possible protein fold has associated energy. The \emph{thermodynamic hypothesis} states that the native structure of a protein is the one for which the free energy achieves the global minimum. Based on this hypothesis, many methods that search for the protein native structure define an approximation of the protein energy and use optimization algorithms that look for the protein fold that minimizes this energy. These approaches mainly differ in the type of energy approximation employed and in the characteristics of the protein modeling.
 
 
-The achievement of the protein native structure is the result of the so-called protein folding process. The laws that govern protein folding are unknown. Therefore a number of ideas have emerged that try to answer this question: how do amino acid sequences specify proteins 3-d structure?
+\subsection{The HP Model}
 
 
-There are two main approaches to protein folding, commonly referred as the ``classical'' and ``new'' views. The ``classical'' view considers folding as a defined sequence of states leading from the unfolded to the native state. This sequence is called the pathway \cite{pande:1998}. In the  ``new'' view approach, folding is seen as the progressive organization of an ensemble of partially folded structures through which the protein passes on its way to the folded structure \cite{onuchic:2004}. This approach emphasizes the idea of each state being an ensemble of rapidly inter-converting conformations. One of the main differences between both approaches is that the ``new'' view allows for a more heterogeneous transition state than the ``classical'' view, which concentrates on a single, well-defined folding pathway \cite{baker:2000}.
+The HP model considers two types of residues:  hydrophobic (H) residues  and hydrophilic or polar (P) residues. A protein is considered a sequence of these two types of residues, which are located in regular lattice models forming self-avoided paths. Given a pair of residues, they are considered neighbors if they are adjacent  either in the chain (connected neighbors) or  in the lattice but not connected in the chain (topological neighbors).
 
 
-Figure~\ref{fig:protviews} shows one schematic representation of the ``classical'' (left) and  ``new'' (right) views of protein folding. In the figure, each possible protein configuration is represented as a circle, and arrows represent possible transitions between configurations. In both approaches, the native state (filled circle) is achieved when the energy is minimized.
-
-\begin{figure}[htb!]
-	\includegraphics[scale=.6]{figures/protviews.png}
-	\label{fig:protviews}
-	\caption{Schematic representation of the “classical” (left) and “new” (right)
-		views of protein folding.}
+\begin{figure}[htb] \label{fig:PROTEXAM}
+	\centering
+	\includegraphics[scale=0.7]{figures/protein_example.png}
+	\caption{One possible configuration of  sequence $HHHPHPPPPPH$ in the HP model. There is one $HH$ (represented by a dotted line with wide spaces), one $HP$ (represented by a dashed line) and  two $PP$  (represented by dotted lines) contacts.}
 \end{figure}
 
 
-%Citar outros operadores (referenciar trabalhos)
+The total number of topological neighboring positions in the lattice ($z$) is called the lattice coordination number.
 
 
-%Mencionar abordagens multi-objetivo (referenciar trabalhos)
+For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads. Figure~\ref{fig:PROTEXAM} shows the graphical representation of a possible configuration for  sequence  $HHHPHPPPPPH$. The energy that the HP model associates with this configuration is $-1$ because there is only one $HH$ contact, arisen between the second and fifth residues.
 
 
-SinglePointCrossover
-TwoPointsCrossover
-MultiPointCrossover (para crossovers)
+Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Between this approaches, there are studies that explore the protein structure prediction combined with evolutionary algorithms like for example, the author of \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy for the PSP Problem using the simplified model Hydrophobic-Polar 2D (2D-HP).
 
-BitFlipMutation
-LoopMoveOperator
-LocalMoveOperator
-SegmentMutationOperator
-OppossiteMoveOperator (para mutacoes)
+
+The authors of \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to 3D HP model with relative representation, optimizing the crossover and mutation operators to improve results in the Protein Folding process.
+
+
+In \cite{custodio2014multiple} is proposed a Multiple minima genetic algorithm for PSP. The algorithm includes a phenotype based crowding mechanism fo the maintenance of useful diversity which increase the population's performance and granted the algorithm multiple solutions capabilities.
+
+
+Then \cite{soares2011investigating} proposed an multi objective algorithm in tables and compares its performance with the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the the folding process: the van der Walls and Electrostatic functions.
+
+
+The author of \cite{gabriel2012algoritmos} also proposes the using of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation.
 
 
 \section{Multi-objective Optimization} \label{sec:optimization}
@@ -166,6 +164,7 @@ For the IBEA fitness calculation (Equation \ref{eq:ibea_fitness}), $k$ is a para
 
 
 \section{Proposed method}
+
 
 The proposed method consists in the application of the algorithms NSGAII and IBEA to the PSP problem using the relative representation applied to the HP model. The multi-objective optimization framework jMetal \cite{jMetal} was used, it presents implementation of the used MOEAs and a easy way to personalize them. To evaluate the generated solutions, a evaluation mechanism was implemented considering two objectives:
 
