@@ -270,24 +270,24 @@ This section presents the set of experiments designed to evaluate the performanc
 		\label{tab:instances}
 		{$\begin{array}{c r r l}
 			\text{inst.} & \text{size} &  \multicolumn{1}{ c }{H({\bf{x}}^*)} & \multicolumn{1}{c}{\text{sequence}} \\ \hline
-			s1 &20 &-9 & HPHPPHHPHHPHPHHPPHPH \\
-			s2 &24 &-9 & HHPPHPPHPPHPPHPPHPPHPPHH \\
-			s3 &25 &-8 & PPHPPHHP^4HHP^4HHP^4HH \\
-			s4 &36 &-14 &  P^3HHPPHHP^5H^7PPHHP^4HHPPHPP\\
-			s5 &48 &-23 &  PPHPPHHPPHHP^5H^{10}P^6 \\
+			sq1 &20 &-9 & HPHPPHHPHHPHPHHPPHPH \\
+			sq2 &24 &-9 & HHPPHPPHPPHPPHPPHPPHPPHH \\
+			sq3 &25 &-8 & PPHPPHHP^4HHP^4HHP^4HH \\
+			sq4 &36 &-14 &  P^3HHPPHHP^5H^7PPHHP^4HHPPHPP\\
+			sq5 &48 &-23 &  PPHPPHHPPHHP^5H^{10}P^6 \\
 			&   &    &  HHPPHHPPHPPH^5 \\
-			s6 &50 &-21 &  HHPHPHPHPH^4PHP^3HP^3HP^4 \\
+			sq6 &50 &-21 &  HHPHPHPHPH^4PHP^3HP^3HP^4 \\
 			&   &    & HP^3HP^3HPH^4{\{PH\}}^4H\\
-			s7 &60 &-36 &  PPH^3PH^8P^3H^{10}PHP^3\\
+			sq7 &60 &-36 &  PPH^3PH^8P^3H^{10}PHP^3\\
 			&   &    &  H^{12}P^4H^6PHHPHP\\
-			s8 &64 &-42 &   H^{12}PHPH{\{PPHH\}}^2PPH{\{PPHH\}}^2\\
+			sq8 &64 &-42 &   H^{12}PHPH{\{PPHH\}}^2PPH{\{PPHH\}}^2\\
 			&   &    &  PPH{\{PPHH\}}^2PPHPHPH^{12}\\
-			s9  &85   &-53  & H^4P^4H^{12}P^6 H^{12} P^3 H^{12} P^3 \\
+			sq9  &85   &-53  & H^4P^4H^{12}P^6 H^{12} P^3 H^{12} P^3 \\
 			&   &    &    H^{12} P^3  H P^2 H^2    P^2 H^2  P^2 H P H  \\
-			s10  &100  &-48  &  P^6HPH^{2}P^5H^{3}PH^5PH^{2} P^4 H^{2} \\
+			sq10  &100  &-48  &  P^6HPH^{2}P^5H^{3}PH^5PH^{2} P^4 H^{2} \\
 			&   &    &   P^2  H^2 P  H^5  P H^{10} P H^{2} P H^{7}  \\
 			&   &    &  P^{11} H^{7} P^2  H P   H^3  P^{6} H P H \\
-			s11 &100  &-50  &  P^3H^{2}P^2H^{4}P^2H^{3}PH^{2} PH^{2}PH^{4} \\
+			sq11 &100  &-50  &  P^3H^{2}P^2H^{4}P^2H^{3}PH^{2} PH^{2}PH^{4} \\
 			&   &    & P^8 H^6 P^{2} H^{6} P^{9} H P H^{2} P  H^{11} P^2  \\
 			&   &    &H^3 P  H^{2} P H P^2  H P H^3 P^6 H^3\\ \hline
 			\end{array}$}
@@ -296,6 +296,90 @@ This section presents the set of experiments designed to evaluate the performanc
 
 \subsection{Results for both approaches and the results from previous works}
 
+\begin{table}[]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{cccccccc}
+		\hline
+		inst                  & Algorithm                   & Statistics & Hypervolume       & inst                  & Algorithm                                           & Statistics & Hypervolume       \\ \hline
+		&                             & Avg        & \textbf{0.742827} &                       &                                                     & Avg        & 0.707654          \\ \cline{3-4} \cline{7-8} 
+		&                             & Std D      & 0.106315          &                       &                                                     & Std D      & 0.082611          \\ \cline{3-4} \cline{7-8} 
+		&                             & Min        & 0.391844          &                       &                                                     & Min        & 0.393669          \\ \cline{3-4} \cline{7-8} 
+		& \multirow{-4}{*}{NSGAII}    & Max        & 0.867612          &                       & \multirow{-4}{*}{NSGAII}                            & Max        & 0.814349          \\ \cline{2-4} \cline{6-8} 
+		&                             & Avg        & 0.720864          &                       & \cellcolor[HTML]{C0C0C0}                            & Avg        & \textbf{0.758128} \\ \cline{3-4} \cline{7-8} 
+		&                             & Std D      & 0.131351          &                       & \cellcolor[HTML]{C0C0C0}                            & Std D      & 0.062315          \\ \cline{3-4} \cline{7-8} 
+		&                             & Min        & 0.296272          &                       & \cellcolor[HTML]{C0C0C0}                            & Min        & 0.586954          \\ \cline{3-4} \cline{7-8} 
+		\multirow{-8}{*}{sq1} & \multirow{-4}{*}{M\_NSGAII} & Max        & 0.869180          & \multirow{-8}{*}{sq5} & \multirow{-4}{*}{\cellcolor[HTML]{C0C0C0}M\_NSGAII} & Max        & 0.854699          \\ \hline
+		&                             & Avg        & 0.680572          &                       &                                                     & Avg        & 0.667771          \\ \cline{3-4} \cline{7-8} 
+		&                             & Std D      & 0.083445          &                       &                                                     & Std D      & 0.132218          \\ \cline{3-4} \cline{7-8} 
+		&                             & Min        & 0.482805          &                       &                                                     & Min        & 0.386680          \\ \cline{3-4} \cline{7-8} 
+		& \multirow{-4}{*}{NSGAII}    & Max        & 0.861476          &                       & \multirow{-4}{*}{NSGAII}                            & Max        & 0.8436351          \\ \cline{2-4} \cline{6-8} 
+		&                             & Avg        & \textbf{0.712275} &                       & \cellcolor[HTML]{C0C0C0}                            & Avg        & \textbf{0.774017} \\ \cline{3-4} \cline{7-8} 
+		&                             & Std D      & 0.137226          &                       & \cellcolor[HTML]{C0C0C0}                            & Std D      & 0.063231          \\ \cline{3-4} \cline{7-8} 
+		&                             & Min        & 0.294348          &                       & \cellcolor[HTML]{C0C0C0}                            & Min        & 0.678249          \\ \cline{3-4} \cline{7-8} 
+		\multirow{-8}{*}{sq2} & \multirow{-4}{*}{M\_NSGAII} & Max        & 0.864054          & \multirow{-8}{*}{sq6} & \multirow{-4}{*}{\cellcolor[HTML]{C0C0C0}M\_NSGAII} & Max        & 0.885620          \\ \hline
+		&                             & Avg        & 0.605000          &                       &                                                     & Avg        & 0.784483          \\ \cline{3-4} \cline{7-8} 
+		&                             & Std D      & 0.116475          &                       &                                                     & Std D      & 0.063257          \\ \cline{3-4} \cline{7-8} 
+		&                             & Min        & 0.293469          &                       &                                                     & Min        & 0.553444          \\ \cline{3-4} \cline{7-8} 
+		& \multirow{-4}{*}{NSGAII}    & Max        & 0.766270          &                       & \multirow{-4}{*}{NSGAII}                            & Max        & 0.848307          \\ \cline{2-4} \cline{6-8} 
+		&                             & Avg        & \textbf{0.639854} &                       &                                                     & Avg        & \textbf{0.792843} \\ \cline{3-4} \cline{7-8} 
+		&                             & Std D      & 0.111780          &                       &                                                     & Std D      & 0.033062          \\ \cline{3-4} \cline{7-8} 
+		&                             & Min        & 0.293469          &                       &                                                     & Min        & 0.701445          \\ \cline{3-4} \cline{7-8} 
+		\multirow{-8}{*}{sq3} & \multirow{-4}{*}{M\_NSGAII} & Max        & 0.766270          & \multirow{-8}{*}{sq7} & \multirow{-4}{*}{M\_NSGAII}                         & Max        & 0.844117          \\ \hline
+		&                             & Avg        & 0.702280          &                       &                                                     & Avg        & 0.677464          \\ \cline{3-4} \cline{7-8} 
+		&                             & Std D      & 0.068983          &                       &                                                     & Std D      & 0.041287         \\ \cline{3-4} \cline{7-8} 
+		&                             & Min        & 0.569481          &                       &                                                     & Min        & 0.580519          \\ \cline{3-4} \cline{7-8} 
+		& \multirow{-4}{*}{NSGAII}    & Max        & 0.818438          &                       & \multirow{-4}{*}{NSGAII}                            & Max        & 0.768068          \\ \cline{2-4} \cline{6-8} 
+		&                             & Avg        & \textbf{0.740153} &                       &                                                     & Avg        & \textbf{0.705798} \\ \cline{3-4} \cline{7-8} 
+		&                             & Std D      & 0.075271          &                       &                                                     & Std D      & 0.053048          \\ \cline{3-4} \cline{7-8} 
+		&                             & Min        & 0.569481          &                       &                                                     & Min        & 0.600804          \\ \cline{3-4} \cline{7-8} 
+		\multirow{-8}{*}{sq4} & \multirow{-4}{*}{M\_NSGAII} & Max        & 0.819282          & \multirow{-8}{*}{sq8} & \multirow{-4}{*}{M\_NSGAII}                         & Max        & 0.831057          \\ \hline
+	\end{tabular}
+\end{table}
 
 
+\begin{table}[]
+	\centering
+	\caption{My caption}
+	\label{my-labe2}
+	\begin{tabular}{cccccccc}
+		\hline
+		inst                  & Algorithm                 & Statistics & Hypervolume       & inst                  & Algorithm                                         & Statistics & Hypervolume       \\ \hline
+		&                           & Avg        & \textbf{0.786571} &                       &                                                   & Avg        & 0.733464          \\ \cline{3-4} \cline{7-8} 
+		&                           & Std D      & 0.067660          &                       &                                                   & Std D      & 0.128757          \\ \cline{3-4} \cline{7-8} 
+		&                           & Min        & 0.674848          &                       &                                                   & Min        & 0.355967          \\ \cline{3-4} \cline{7-8} 
+		& \multirow{-4}{*}{IBEA}    & Max        & 0.867089          &                       & \multirow{-4}{*}{IBEA}                            & Max        & 0.892926          \\ \cline{2-4} \cline{6-8} 
+		&                           & Avg        & \textbf{0.786571} &                       & \cellcolor[HTML]{C0C0C0}                          & Avg        & 0.807637          \\ \cline{3-4} \cline{7-8} 
+		&                           & Std D      & 0.099424          &                       & \cellcolor[HTML]{C0C0C0}                          & Std D      & 0.039620          \\ \cline{3-4} \cline{7-8} 
+		&                           & Min        & 0.391844          &                       & \cellcolor[HTML]{C0C0C0}                          & Min        & 0.701016          \\ \cline{3-4} \cline{7-8} 
+		\multirow{-8}{*}{sq1} & \multirow{-4}{*}{M\_IBEA} & Max        & 0.866044          & \multirow{-8}{*}{sq5} & \multirow{-4}{*}{\cellcolor[HTML]{C0C0C0}M\_IBEA} & Max        & 0.891029          \\ \hline
+		&                           & Avg        & 0.719960          &                       &                                                   & Avg        & 0.728699          \\ \cline{3-4} \cline{7-8} 
+		&                           & Std D      & 0.080727          &                       &                                                   & Std D      & 0.080679          \\ \cline{3-4} \cline{7-8} 
+		&                           & Min        & 0.5767626         &                       &                                                   & Min        & 0.470558          \\ \cline{3-4} \cline{7-8} 
+		& \multirow{-4}{*}{IBEA}    & Max        & 0.864054          &                       & \multirow{-4}{*}{IBEA}                            & Max        & 0.845718          \\ \cline{2-4} \cline{6-8} 
+		&                           & Avg        & \textbf{0.737086} &                       & \cellcolor[HTML]{C0C0C0}                          & Avg        & \textbf{0.821177} \\ \cline{3-4} \cline{7-8} 
+		&                           & Std D      & 0.095299          &                       & \cellcolor[HTML]{C0C0C0}                          & Std D      & 0.048124          \\ \cline{3-4} \cline{7-8} 
+		&                           & Min        & 0.389299          &                       & \cellcolor[HTML]{C0C0C0}                          & Min        & 0.678415          \\ \cline{3-4} \cline{7-8} 
+		\multirow{-8}{*}{sq2} & \multirow{-4}{*}{M\_IBEA} & Max        & 0.864054          & \multirow{-8}{*}{sq6} & \multirow{-4}{*}{\cellcolor[HTML]{C0C0C0}M\_IBEA} & Max        & 0.885620          \\ \hline
+		&                           & Avg        & 0.766270          &                       &                                                   & Avg        & 0.801778          \\ \cline{3-4} \cline{7-8} 
+		&                           & Std D      & 0.133301          &                       &                                                   & Std D      & 0.067111          \\ \cline{3-4} \cline{7-8} 
+		&                           & Min        & 0.198802          &                       &                                                   & Min        & 0.553095          \\ \cline{3-4} \cline{7-8} 
+		& \multirow{-4}{*}{IBEA}    & Max        & 0.7662704         &                       & \multirow{-4}{*}{IBEA}                            & Max        & 0.873693          \\ \cline{2-4} \cline{6-8} 
+		&                           & Avg        & \textbf{0.665162} &                       &                                                   & Avg        & \textbf{0.810351} \\ \cline{3-4} \cline{7-8} 
+		&                           & Std D      & 0.140074          &                       &                                                   & Std D      & 0.054576          \\ \cline{3-4} \cline{7-8} 
+		&                           & Min        & 0.198802          &                       &                                                   & Min        & 0.676720          \\ \cline{3-4} \cline{7-8} 
+		\multirow{-8}{*}{sq3} & \multirow{-4}{*}{M\_IBEA} & Max        & 0.766270          & \multirow{-8}{*}{sq7} & \multirow{-4}{*}{M\_IBEA}                         & Max        & 0.874023          \\ \hline
+		&                           & Avg        & 0.804786          &                       &                                                   & Avg        & 0.745065          \\ \cline{3-4} \cline{7-8} 
+		&                           & Std D      & 0.099029          &                       &                                                   & Std D      & 0.036454          \\ \cline{3-4} \cline{7-8} 
+		&                           & Min        & 0.476124          &                       &                                                   & Min        & 0.643070          \\ \cline{3-4} \cline{7-8} 
+		& \multirow{-4}{*}{IBEA}    & Max        & 0.876228          &                       & \multirow{-4}{*}{IBEA}                            & Max        & 0.814004          \\ \cline{2-4} \cline{6-8} 
+		&                           & Avg        & \textbf{0.841186} &                       & \cellcolor[HTML]{C0C0C0}                          & Avg        & \textbf{0.811439} \\ \cline{3-4} \cline{7-8} 
+		&                           & Std D      & 0.059579          &                       & \cellcolor[HTML]{C0C0C0}                          & Std D      & 0.050087          \\ \cline{3-4} \cline{7-8} 
+		&                           & Min        & 0.674636          &                       & \cellcolor[HTML]{C0C0C0}                          & Min        & 0.685335          \\ \cline{3-4} \cline{7-8} 
+		\multirow{-8}{*}{sq4} & \multirow{-4}{*}{M\_IBEA} & Max        & 0.877173          & \multirow{-8}{*}{sq8} & \multirow{-4}{*}{\cellcolor[HTML]{C0C0C0}M\_IBEA} & Max        & 0.899353          \\ \hline
+	\end{tabular}
+\end{table}
+
+	
 \section{Conclusion}
