@@ -63,22 +63,15 @@ Brasil \textit{et al}.\cite{soares2011investigating} proposed an multi objective
 
 The author of \cite{gabriel2012algoritmos} also proposes the using of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation.
 
-%----
-%TODO ref 19 Roberto
-%GA
-Unger and Moult \cite{} described a genetic algorithm (GA) that use heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
+Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that use heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
 
-%TODO ref 17 Roberto
-%MMA
-The multimeme algorithm (MMA) proposed by \cite{} is a GA combined with a set fo local searches. The algorithm for each different instance or individuals in the population, select the local search method that best fits. Originally used to find solutions for the functional model protein. The algorithm was later improved with fuzy-logic-based local searches, leading the algorithm to find improved results in the PSP problem.
 
-%TODO ref 25 Roberto
-%PERM
-Chain growth algorithm as the pruned-enriched Rosenbluth method (PERM) \cite{} is based on growing the sequence conformation by adding individuals particles aiming increase good configurations and eliminating bad ones.
+The multimeme algorithm (MMA) proposed by \cite{krasnogor2002multimeme} is a GA combined with a set fo local searches. The algorithm for each different instance or individuals in the population, select the local search method that best fits. Originally used to find solutions for the functional model protein. The algorithm was later improved with fuzy-logic-based local searches, leading the algorithm to find improved results in the PSP problem.
 
-%TODO ref 18 e 28 Roberto
-%ACO
-The ant colony optimization (ACO) \cite{} is an algorithm that incorporates the use of a modeling step. In this approach, the artificial ants build conformations for a given HP protein sequence, apply a local search to improve the results and maintain a probability value based on the quality of the found solutions, the so called pheromone trail.
+
+Chain growth algorithm as the pruned-enriched Rosenbluth method (PERM) \cite{hsu2003growth} is based on growing the sequence conformation by adding individuals particles aiming increase good configurations and eliminating bad ones.
+
+The ant colony optimization (ACO) \cite{shmygelska2002ant, shmygelska2003improved} is an algorithm that incorporates the use of a modeling step. In this approach, the artificial ants build conformations for a given HP protein sequence, apply a local search to improve the results and maintain a probability value based on the quality of the found solutions, the so called pheromone trail.
 
 \section{Multi-objective Optimization} \label{sec:optimization}
 
