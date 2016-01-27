@@ -8,6 +8,11 @@
 
 \section{Introduction} \label{sec:intro}
 
+
+The proteins have a fundamental task in the nature. These structures, made of amino-acids, participate in many of the most important tasks of the living cells. Proteins guarantee the correct functioning of a large number of biological entities in nature. The protein structure is the result of the so-called protein folding process in which the initially unfolded chain of amino-acids is transformed into its final structure. Under suitable conditions, this structure is uniquely determined by its sequence \cite{santana2004protein}.
+
+Determine the final structure of a protein in a difficult task. Given its complexity, using a representation close to the real would be impossible for current computers to process the information in a reasonable time. This is why many authors as in \cite{lin2011protein, custodio2004investigation}
+
 %Objetivos
 
 %Contribuições
@@ -27,7 +32,7 @@ Under specific conditions, the protein sequence folds into a unique native 3-d s
 \subsection{The HP Model}
 
 
-The Protein Structures are very complex. Use a representation close to the real would be impossible for current computers to process the information in a reasonable time. Having this in mind, Lau and Dill \cite{lau1989lattice} created a model called \textit{Hydrophobic-Hydrophilic} Model (HP Model), to represent the proteins using simplifications. The model can be used either to represent proteins in a 2D space or 3D space.
+Lau and Dill \cite{lau1989lattice} created a model called \textit{Hydrophobic-Hydrophilic} Model (HP Model), to represent the proteins using simplifications. The model can be used either to represent proteins in a 2D space or 3D space.
 
 
 The HP model considers two types of residues:  hydrophobic (H) residues  and hydrophilic or polar (P) residues. A protein is considered a sequence of these two types of residues, which are located in regular lattice models forming self-avoided paths. Given a pair of residues, they are considered neighbors if they are adjacent  either in the chain (connected neighbors) or  in the lattice but not connected in the chain (topological neighbors).
@@ -60,7 +65,7 @@ Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima
 
 Brasil \textit{et al}.\cite{soares2011investigating} proposed an multi objective algorithm in tables and compare its performance with the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the the folding process: the van der Walls and Electrostatic functions.
 
-
+%TODO descrever melhor os dois papers
 The author of \cite{gabriel2012algoritmos} also proposes the using of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation.
 
 Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that use heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
