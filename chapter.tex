@@ -11,11 +11,57 @@
 
 The proteins have a fundamental task in the nature. These structures, made of amino-acids, participate in many of the most important tasks of the living cells. Proteins guarantee the correct functioning of a large number of biological entities in nature. The protein structure is the result of the so-called protein folding process in which the initially unfolded chain of amino-acids is transformed into its final structure. Under suitable conditions, this structure is uniquely determined by its sequence \cite{santana2004protein}.
 
-Determine the final structure of a protein in a difficult task. Given its complexity, using a representation close to the real would be impossible for current computers to process the information in a reasonable time. This is why many authors as in \cite{lin2011protein, custodio2004investigation}
 
-%Objetivos
+Determine the final structure of a protein in a difficult task. Given its complexity, using a representation close to the real would be impossible for current computers to process the information in a reasonable time. This is why many authors as in \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic} among others, use a simplified model to represent the protein structures. A well known model for this purpose is the \textit{Hydrophobic-Hydrophilic} model (HP model), created by Lau and Dill \cite{lau1989lattice}. Considering just two types of residues H and P in a regular lattice, becomes easier to represent a protein and work with it to simulate the folding process.
+
+
+Manipulate a protein structure represented in the HP model requires some attention, in order to respect the given restrictions and avoid unfeasible conformations. Another issue is the difficulty in find good measures to verify the solution's quality. The most common measure used for the HP model is to calculate the conformation's energy. But sometimes just the energy measure is not enough, being necessary the use of a second objective to avoid treating different solutions with the same energy value as being the same for example.
+
+
+Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used, trying to define which methods have better results in the study of the PSP Problem. Among these approaches, evolutionary techniques have being applied to the protein folding problem. Methods such Genetic Algorithms (GA) are random search optimized by multiple pathways \cite{lin2011protein}.
+
+
+%TODO descrever melhor
+Lin and Su \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy for the PSP Problem using the simplified model Hydrophobic-Polar 2D (HP-2D).
+
+
+In other work, Lin and Su \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to HP-3D model with relative representation, optimizing the crossover and mutation operators to improve results in the Protein Folding process. The algorithm was a improved version of a GA based on a PSO, where the solutions were encouraged to move toward their own best solution.
+
+
+Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima Genetic Algorithm for PSP. The algorithm included a phenotype based crowding mechanism for the maintenance of useful diversity which increase the population's performance and granted the algorithm multiple solutions capabilities.
+
+
+Brasil \textit{et al}.\cite{soares2011investigating} proposed an multi objective algorithm in tables and compare its performance with the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the the folding process: the van der Walls and Electrostatic functions.
+
+
+%TODO descrever melhor os dois papers
+The author of \cite{gabriel2012algoritmos} also proposes the using of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation.
+
+
+Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that use heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
+
+
+The multimeme algorithm (MMA) proposed by \cite{krasnogor2002multimeme} is a GA combined with a set fo local searches. The algorithm for each different instance or individuals in the population, select the local search method that best fits. Originally used to find solutions for the functional model protein. The algorithm was later improved with fuzy-logic-based local searches, leading the algorithm to find improved results in the PSP problem.
+
+
+Chain growth algorithm as the pruned-enriched Rosenbluth method (PERM) \cite{hsu2003growth} is based on growing the sequence conformation by adding individuals particles aiming increase good configurations and eliminating bad ones.
+
+The ant colony optimization (ACO) \cite{shmygelska2002ant, shmygelska2003improved} is an algorithm that incorporates the use of a modeling step. In this approach, the artificial ants build conformations for a given HP protein sequence, apply a local search to improve the results and maintain a probability value based on the quality of the found solutions, the so called pheromone trail.
+
+
+%TODO falar sobre a nova metodologia com backtracking
+This work make use of a technique of...
+
+
+%TODO melhorar e falar sobre a comparação entre metodologias
+This work proposes the application of and comparison of the multi objective evolutionary algorithms NSGAII and IBEA \cite{zitzler2004indicator} using backtracking and compare its results with a version without it. Having as the main objective minimizing the energy calculated from the HP model, and as secondary objective minimizing the euclidean distance between amino acids of a protein.
+
 
 %Contribuições
+
+
+
+This work is organized as follows.
 
 \section{Protein Structure Prediction} \label{sec:proteinfolding}
 
@@ -51,32 +97,8 @@ The total number of topological neighboring positions in the lattice ($z$) is ca
 For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads. Figure~\ref{fig:PROTEXAM} shows the graphical representation of a possible configuration for  sequence  $HHHPHPPPPPH$ in a 2D space. The energy that the HP model associates with this configuration is $-1$ because there is only one $HH$ contact, arisen between the second and fifth residues.
 
 
-Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used, trying to define which methods have better results in the study of the PSP Problem.
+%TODO falar sobre representação absoluta e relativa?
 
-
-Among these approaches, there are studies that explore the protein structure prediction combined with evolutionary algorithms like for example, Lin and Su \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy for the PSP Problem using the simplified model Hydrophobic-Polar 2D (HP-2D).
-
-
-In other work, Lin and Su \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to HP-3D model with relative representation, optimizing the crossover and mutation operators to improve results in the Protein Folding process. The algorithm was a improved version of a GA based on a PSO, where the solutions were encouraged to move toward their own best solution.
-
-
-Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima Genetic Algorithm for PSP. The algorithm included a phenotype based crowding mechanism for the maintenance of useful diversity which increase the population's performance and granted the algorithm multiple solutions capabilities.
-
-
-Brasil \textit{et al}.\cite{soares2011investigating} proposed an multi objective algorithm in tables and compare its performance with the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the the folding process: the van der Walls and Electrostatic functions.
-
-%TODO descrever melhor os dois papers
-The author of \cite{gabriel2012algoritmos} also proposes the using of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation.
-
-Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that use heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
-
-
-The multimeme algorithm (MMA) proposed by \cite{krasnogor2002multimeme} is a GA combined with a set fo local searches. The algorithm for each different instance or individuals in the population, select the local search method that best fits. Originally used to find solutions for the functional model protein. The algorithm was later improved with fuzy-logic-based local searches, leading the algorithm to find improved results in the PSP problem.
-
-
-Chain growth algorithm as the pruned-enriched Rosenbluth method (PERM) \cite{hsu2003growth} is based on growing the sequence conformation by adding individuals particles aiming increase good configurations and eliminating bad ones.
-
-The ant colony optimization (ACO) \cite{shmygelska2002ant, shmygelska2003improved} is an algorithm that incorporates the use of a modeling step. In this approach, the artificial ants build conformations for a given HP protein sequence, apply a local search to improve the results and maintain a probability value based on the quality of the found solutions, the so called pheromone trail.
 
 \section{Multi-objective Optimization} \label{sec:optimization}
 
