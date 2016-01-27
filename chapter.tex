@@ -195,12 +195,12 @@ Two multi-objective approaches were designed in this chapter, using the MOEAs (N
 \end{figure}
 
 
-The first approach consisted on applying two well-known state of art MOEAs (IBEA and NSGAII) to the PSP using the HP-2D model. The genetic operators used by IBEA and NSGAII algorithms, in this approach, were only the single point crossover in the case of crossover and bit flip mutation for mutation operator.  It was decided to use only single point crossover and bit flip mutation because this combination of operators presented better results in previous experiments realized within the PSP problem and the HP-2D model.
+The first approach consisted on applying two well-known state of art MOEAs (IBEA and NSGAII) to the PSP using the HP-2D model. The genetic operators used by IBEA and NSGAII algorithms, in this approach, were only the single point crossover, in the case of crossover, and bit flip mutation for mutation operator. It was decided to use only the single point crossover and the bit flip mutation because this combination of operators presented better results in previous experiments realized within the PSP problem and the HP-2D model.
 
 In the case of the second approach the IBEA and NSGAII algorithms were modified in order to improve their results when compared with the first approach. The modifications implemented will be described next:
 
 \begin{itemize}
-	\item \textbf{Pool of operators}:  As mentioned in section X, the use of traditional operators usually does not guide the search to prominent regions of the search space of the HP-2D model. In order to supplement the MOEAs, a pool of operators were designed based on the literature and are presented on table X.  For every mating the crossover and mutation operators are selected randomly from the pool of operators and than applied. Also the crossover and mutation operators are always applied differently from the first approach which uses a probability of occurrence. The pool of operators will be described next:
+	\item \textbf{Pool of operators}:  As mentioned in section X, the use of traditional operators usually does not guide the search to prominent regions of the search space of the HP-2D model. In order to supplement the MOEAs, a pool of operators were designed based on the literature. For every mating the crossover and mutation operators are selected randomly from the pool of operators and than applied. Also the crossover and mutation operators are always applied differently from the first approach which uses a probability of occurrence. The pool of operators will be described next:
 	
 	\begin{itemize}
 		\item Single Point Crossover (1x): A single point on both parent individuals is selected. All data beyond that point in either individual will be swapped between the two parent individuals. Resulting in two distinct child individuals \cite{holland1975adaptation}.
@@ -268,43 +268,95 @@ This mechanism was implemented because in previous experiments was observed that
 
 To evaluate and compare the performance of multi-objective algorithms, quality indicators are commonly used. In this study was used the hypervolume indicator, which considers the volume of the search space dominated by the known pareto front \cite{zitzler2003performance} of an algorithm. Higher hypervolume value means that the quality is better than one lesser hypervolume value.
 
+
+
+
 \section{Experiments}
 
-This section presents the set of experiments designed to evaluate the performance of the approaches introduced in section \ref{sec:proposedMethod}. The HP sequences used in the experiments are shown in table \ref{tab:instances}, those instances have been used in previously works such as \cite{bastolla1997testing,shmygelska2002ant,unger1993genetic,cotta2003protein, santana2004protein,shmygelska2003improved,lesh2003complete}. The values presented in table \ref{tab:instances} correspond to the sequence identifier, the size of aminoacid sequence, the best known solutions ($H(x*)$) for the HP-2D model and the sequence itself. 
+This section presents the set of experiments designed to evaluate the performance of the approaches introduced in section \ref{sec:proposedMethod}. The HP sequences used in the experiments are shown in table \ref{tab:instances}, those instances have been used in previously works such as \cite{bastolla1997testing,shmygelska2002ant,unger1993genetic,cotta2003protein, santana2004protein,shmygelska2003improved,lesh2003complete}. The values presented in table \ref{tab:instances} correspond to the sequence identifier, the size of aminoacid sequence, the best known solutions ($H(x*)$) for the HP-2D model and the sequence itself. It is worthwhile to mention that sequences used in this chapter are randomly generated. Hence they do not fold to a single conformation, as natural proteins, because they are not products of natural selection \cite{chan2001perspectives}.
 
-\begin{table}[htbp]
+\begin{table}[]
 	\begin{center}
 		\caption{HP instances used in the experiments. The search space of each instance is $2^n$ where $n$ is the size of
 			the instance.}
 		\label{tab:instances}
 		{$\begin{array}{c r r l}
 			\text{inst.} & \text{size} &  \multicolumn{1}{ c }{H({\bf{x}}^*)} & \multicolumn{1}{c}{\text{sequence}} \\ \hline
-			s1 &20 &-9 & HPHPPHHPHHPHPHHPPHPH \\
-			s2 &24 &-9 & HHPPHPPHPPHPPHPPHPPHPPHH \\
-			s3 &25 &-8 & PPHPPHHP^4HHP^4HHP^4HH \\
-			s4 &36 &-14 &  P^3HHPPHHP^5H^7PPHHP^4HHPPHPP\\
-			s5 &48 &-23 &  PPHPPHHPPHHP^5H^{10}P^6 \\
+			sq1 &20 &-9 & HPHPPHHPHHPHPHHPPHPH \\
+			sq2 &24 &-9 & HHPPHPPHPPHPPHPPHPPHPPHH \\
+			sq3 &25 &-8 & PPHPPHHP^4HHP^4HHP^4HH \\
+			sq4 &36 &-14 &  P^3HHPPHHP^5H^7PPHHP^4HHPPHPP\\
+			sq5 &48 &-23 &  PPHPPHHPPHHP^5H^{10}P^6 \\
 			&   &    &  HHPPHHPPHPPH^5 \\
-			s6 &50 &-21 &  HHPHPHPHPH^4PHP^3HP^3HP^4 \\
+			sq6 &50 &-21 &  HHPHPHPHPH^4PHP^3HP^3HP^4 \\
 			&   &    & HP^3HP^3HPH^4{\{PH\}}^4H\\
-			s7 &60 &-36 &  PPH^3PH^8P^3H^{10}PHP^3\\
+			sq7 &60 &-36 &  PPH^3PH^8P^3H^{10}PHP^3\\
 			&   &    &  H^{12}P^4H^6PHHPHP\\
-			s8 &64 &-42 &   H^{12}PHPH{\{PPHH\}}^2PPH{\{PPHH\}}^2\\
+			sq8 &64 &-42 &   H^{12}PHPH{\{PPHH\}}^2PPH{\{PPHH\}}^2\\
 			&   &    &  PPH{\{PPHH\}}^2PPHPHPH^{12}\\
-			s9  &85   &-53  & H^4P^4H^{12}P^6 H^{12} P^3 H^{12} P^3 \\
-			&   &    &    H^{12} P^3  H P^2 H^2    P^2 H^2  P^2 H P H  \\
-			s10  &100  &-48  &  P^6HPH^{2}P^5H^{3}PH^5PH^{2} P^4 H^{2} \\
-			&   &    &   P^2  H^2 P  H^5  P H^{10} P H^{2} P H^{7}  \\
-			&   &    &  P^{11} H^{7} P^2  H P   H^3  P^{6} H P H \\
-			s11 &100  &-50  &  P^3H^{2}P^2H^{4}P^2H^{3}PH^{2} PH^{2}PH^{4} \\
-			&   &    & P^8 H^6 P^{2} H^{6} P^{9} H P H^{2} P  H^{11} P^2  \\
-			&   &    &H^3 P  H^{2} P H P^2  H P H^3 P^6 H^3\\ \hline
+			\hline
 			\end{array}$}
 	\end{center}
 \end{table}
 
-\subsection{Results for both approaches and the results from previous works}
+\subsection{Comparison between the modified/traditional versions of the MOEAs}
 
+As mentioned in the beginning of this section the hypervolume indicator was used in order to compare the MOEAs performance. The hypervolume results are presented on table \ref{tab:hypervolumeResults}. The hypervolume average and standard deviation, of 30 independent executions, are presented. The average values highlighted with a bold font are the highest average value. 
+Looking to table \ref{tab:hypervolumeResults} is possible to notice, except for $sq1$, that for all sequences the M\_IBEA (modified version of the IBEA with backtrack and pool of operators) obtained a higher hypervolume average than the other algorithms. In the case of $sq1$ the IBEA without modifications obtained a higher value compared with the others. It is also possible to see that, comparing only the NSGAII versions, the modified version M\_NSGAII obtained better results, except for $sq1$. In general, the MOEAS with backtrack and pool of operators presented an improvement in relation to the traditional MOEAs.
+
+   
+
+\begin{table}[]
+	\centering
+	\caption{Results of hypervolume average/standard deviation of the MOEAs}
+	\label{tab:hypervolumeResults}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\multirow{2}{*}{Instance} & \multicolumn{4}{c|}{\begin{tabular}[c]{@{}c@{}}Hypervolume Average\\ (Std D)\end{tabular}} \\ \cline{2-5} 
+		& NSGAII            & M\_NSGAII         & IBEA                     & M\_IBEA                 \\ \hline
+		\multirow{2}{*}{sq1}      & 0.742827          & 0.720864          & \textbf{0.789712}        & 0.786571       \\
+		& (0.106315)        & (0.131351)        & (0.067660)               & (0.099424)              \\ \hline
+		\multirow{2}{*}{sq2}      & 0.680572          & 0.712275          & 0.719960                 & \textbf{0.737086}       \\
+		& (0.083445)        & (0.137226)        & (0.080727)               & (0.095299)              \\ \hline
+		\multirow{2}{*}{sq3}      & 0.671171          & 0.709898          & 0.716438                 & \textbf{0.738017}       \\
+		& (0.129417)        & (0.124201)        & (0.148112)               & (0.155638)              \\ \hline
+		\multirow{2}{*}{sq4}      & 0.702280          & 0.740153          & 0.751755                 & \textbf{0.785728}       \\
+		& (0689832)         & (0.075271)        & (0.092427)               & (0.055607)              \\ \hline
+		\multirow{2}{*}{sq5}      & 0.707654          & 0.758128          & 0.733464                 & \textbf{0.807637}       \\
+		& (0.082611)        & (0.062315)        & (0.128757)               & (0.039620)              \\ \hline
+		\multirow{2}{*}{sq6}      & 0.667771          & 0.774017          & 0.728699                 & \textbf{0.821177}       \\
+		& (0.132218)        & (0.063231)        & (0.080679)               & (0.048124)              \\ \hline
+		\multirow{2}{*}{sq7}      & 0.784483          & 0.792843          & 0.801778                 & \textbf{0.810351}       \\
+		& (0.063257)        & (0.033062)        & (0.067111)               & (0.054576)              \\ \hline
+		\multirow{2}{*}{sq8}      & 0.677464          & 0.705798          & 0.7450656                & \textbf{0.811439}       \\
+		& (0.041287)        & (0.053048)        & (0.036454)               & (0.050087)              \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsection{Comparison with previous works}	
+
+This section will compare the results obtained by the MOEAs with other approaches from the previous works described on section BLAH. This sections is only concerned with the first objective (Energy of given conformation), since the other works are single-objective. Table \ref{tab:comparison} presents the best results, in terms of energy, found by the modified MOEAs and also the best results obtained by the previous works.
+
+
+\begin{table}[]
+	\centering
+	\caption{Comparison with the previous works}
+	\label{tab:comparison}
+	\begin{tabular}{ccccccccc}
+		\hline
+		inst                    & M\_IBEA      & M\_NSGAII    & EDA          & GA           & MMA          & ACO          & NewACO       & PERM         \\ \hline
+		sq1                     & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  \\ \hline
+		sq2                     & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  \\ \hline
+		sq3                     & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  \\ \hline
+		\multicolumn{1}{l}{sq4} & -13          & -13          & \textbf{-14} & \textbf{-14} & \textbf{-14} & \textbf{-14} & \textbf{-14} & \textbf{-14} \\ \hline
+		\multicolumn{1}{l}{sq5} & \textbf{-23} & -22          & \textbf{-23} & -22          & -22          & \textbf{-23} & \textbf{-23} & \textbf{-23} \\ \hline
+		\multicolumn{1}{l}{sq6} & \textbf{-21} & \textbf{-21} & \textbf{-21} & \textbf{-21} &              & \textbf{-21} & \textbf{-21} & \textbf{-21} \\ \hline
+		\multicolumn{1}{l}{sq7} & -35          & -34          & -35          & -34          &              & -34          & \textbf{-36} & \textbf{-36} \\ \hline
+		sq8                     & \textbf{-42} & -39          & \textbf{-42} & -37          &              & -32          & \textbf{-42} & -38          \\ \hline
+	\end{tabular}
+\end{table}
+
+ For the first 3 sequences $sq1$, $sq2$ and $sq3$ the modified MOEAs (M\_NSGAII and M\_IBEA) obtained the same results that the previous works obtained. In the case of $sq4$ both M\_IBEA and M\_NSGAII the best value obtained was -13 and the all other previous works obtained the optimum value of -14. For sequence $sq5$ four previous work and M\_IBEA have achieved the optimum value -23. However M\_NSGAII and the other previous works obtained a lesser value of -22. In the case of sequence $sq6$ all algorithms obtained the optimum value of -21. For sequence $sq7$ the M\_IBEA obtained -35 as the EDA \cite{santana2008protein}. However the best values found for $sq7$ were obtained by NewACO \cite{shmygelska2003improved} and PERM \cite{hsu2003growth}. For the last sequence $sq8$ the M\_IBEA obtained the optimum value of -42 which is the same obtained by EDA \cite{santana2008protein} and NewACO \cite{shmygelska2003improved}. All other approaches obtained lesser values for sequence $sq8$.
 
 
 \section{Conclusion}
