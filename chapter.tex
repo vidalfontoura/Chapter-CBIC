@@ -211,27 +211,50 @@ In the case of the second approach the IBEA and NSGAII algorithms were modified 
 		
 		\item Bit Flip Mutation (BFM): The BFM operator selects one random gene from a parent individual and changes it to other value. Resulting in one new individual \cite{holland1975adaptation}.
 		
-		\item Loop Move Mutation (LMM): The LMM operator swaps the directions between two randomly chosen consecutive genes. This operator introduces a corner movement \cite{bazzoli2004memetic}. Figure \ref{fig:operatorLMM} presents a example of application of this operator.
+		\item Local Move Mutation (LMM): The LMM operator swaps the directions between two randomly chosen consecutive genes. This operator introduces a corner movement \cite{bazzoli2004memetic}. Figure \ref{fig:operatorLMM} presents a example of application of this operator.
 		
 		
 		
 		\begin{figure}[htb!]
-			\includegraphics[scale=.6]{figures/operators/LMM.png}
+			\includegraphics[scale=.4,frame]{figures/operators/LMM.png}
 			\label{fig:operatorLMM}
+			\centering
 			\caption{Example of application of the LMM operator. The genes from the red circle of leftmost figure were swapped resulting in the rightmost figure.} 
 		\end{figure}
 		
 		\item Loop Move Mutation (LoMM): This operator is similar with LMM however exchanges directions between genes that are five positions apart on the sequence creating a loop movement. Both LMM and LoMM is useful to generate modifications on compact structures \cite{custodio2014multiple}.
 		
+			\begin{figure}[htb!]
+				\includegraphics[scale=.4,frame]{figures/operators/LOMM.png}
+				\label{fig:operatorLOMM}
+				\centering
+				\caption{Example of application of the LOMM operator. The genes from the red circle of leftmost figure were swapped resulting in the rightmost figure.} 
+			\end{figure}
+		
 		%Adicionar figura LoMM
 		
 		\item Segment Mutation (SM): This operator changes a random number of consecutive genes (from two to seven) into new random directions. This operator introduces large conformational changes and has a high probability of creating collisions, in order to avoid too much invalid solutions the repair mechanism is applied on the generated child \cite{custodio2014multiple}. 
 		
-		%Adicionar FIGURA SM
+		
+			\begin{figure}[htb!]
+				\includegraphics[scale=.4,frame]{figures/operators/SM.png}
+				\centering
+				\label{fig:operatorSM}
+				\caption{Example of application of the SM operator. The genes from the red circle of leftmost figure were swapped by random genes resulting in the rightmost figure.} 
+			\end{figure}
+		
+
 		
 		\item Opposite Mutation (OM): This operator changes a random number of consecutive genes to its inverse position. In the case of the relative representation to the HP-2D model, only left and right can be mapped to its inverse.  
 		
-		%Adicionar FIGURA OPPOSITE
+		
+		
+		\begin{figure}[htb!]
+			\includegraphics[scale=.4,frame]{figures/operators/OM.png}
+			\centering
+			\label{fig:operatorOM}
+			\caption{Example of application of the SM operator. The genes from the red circle of leftmost figure were swapped by random genes resulting in the rightmost figure.} 
+		\end{figure}
 		
 		
 		
