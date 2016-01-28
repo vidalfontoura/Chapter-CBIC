@@ -323,6 +323,27 @@ This section presents the set of experiments designed to evaluate the performanc
 	\end{center}
 \end{table}
 
+The configuration used for the MOEAs was defined based on the sequence length. Smaller sequences it was used a smaller population size and larger sequences it was used a larger population size. The same is true in the case of the stop condition (max evaluations). Table \ref{tab:popConfiguration} presents the population size and max evaluations configurations used for each amino-acid sequence. In the case of the first approach the probability of crossover/mutation occurrence was fixed, for all sequences, in 0.9 and 0.01 respective. The second approach does not uses a probability since the operators are always applied to generate new individuals. The auxiliary population used by the IBEA algorithm was fixed in 200 for all sequences.   
+
+
+\begin{table}[]
+	\centering
+	\caption{Population size and max evaluations configurations for each sequence}
+	\label{tab:popConfiguration}
+	\begin{tabular}{ccccl}
+		\hline
+		Sequences & Size & \begin{tabular}[c]{@{}c@{}}Population \\ Size\end{tabular} & \begin{tabular}[c]{@{}c@{}}Max \\ Evaluations\end{tabular} & \multicolumn{1}{c}{} \\ \hline
+		sq1      & 20   & 100                                                        & 25000                                                      &                      \\ \hline
+		sq2      & 24   & 100                                                        & 25000                                                      &                      \\ \hline
+		sq3      & 25   & 500                                                        & 250000                                                     &                      \\ \hline
+		sq4      & 36   & 500                                                        & 250000                                                     &                      \\ \hline
+		sq5      & 48   & 1000                                                       & 2500000                                                    &                      \\ \hline
+		sq6      & 50   & 1000                                                       & 2500000                                                    &                      \\ \hline
+		sq7      & 60   & 2500                                                       & 2500000                                                    &                      \\ \hline
+		sq8      & 64   & 2500                                                       & 2500000                                                    &                      \\ \hline
+	\end{tabular}
+\end{table}
+
 \subsection{Comparison between the modified/traditional versions of the MOEAs}
 
 As mentioned in the end of section \ref{sec:proposedMethod} the hypervolume indicator was used in order to compare the MOEAs performance. The hypervolume results are presented on table \ref{tab:hypervolumeResults}. The hypervolume average and standard deviation, of 30 independent executions, are presented. The average values highlighted with a bold font are the highest values. 
@@ -384,3 +405,5 @@ This section will compare the results obtained by the MOEAs with other approache
 
 
 \section{Conclusion}
+
+MOEAs are evolutionary algorithms that tries to address the challenge of optimization of multiple objectives at the same time. They have been presenting good results with many areas of science. This chapter applies two well known MOEAs in order to address the PSP problem using the HP-2D model. 
