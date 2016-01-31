@@ -3,7 +3,7 @@
 \chapterauthor{Author Name3}{Affiliation text3}
 \chapterauthor{Author Name4}{Affiliation text4}
 
-\chapter{Multi objective evolutionary algorithms applied to Protein Structure Prediction Problem}
+\chapter{Multi objective evolutionary algorithms applied to the Protein Structure Prediction Problem}
 
 
 \section{Introduction} \label{sec:intro}
@@ -18,17 +18,17 @@
 Proteins are macromolecules made out of  twenty different amino acids, also referred to as residues. An amino acid has a peptide backbone and a distinctive side chain group. The peptide bond is defined by an amino group and a carboxyl group connected to an alpha carbon to which  a hydrogen and side chain group are attached.
 
 
-Amino acids are combined to form sequences which are considered the primary structure of the peptides or proteins. The secondary structure is the locally ordered structure brought about via hydrogen bounding mainly within the peptide backbone. The most common secondary structure elements in proteins are the alpha helix and the beta sheet. The tertiary structure is the global folding of a single polypeptide chain.
+Amino acids are combined to form sequences which are considered the primary structure of the peptides or proteins. The secondary structure is the locally ordered structure brought via hydrogen bounding mainly within the peptide backbone. The most common secondary structure elements in proteins are the alpha helix and the beta sheet. The tertiary structure is the global folding of a single polypeptide chain.
 
 
-Under specific conditions, the protein sequence folds into a unique native 3-d structure. Each possible protein fold has associated energy. The \emph{thermodynamic hypothesis} states that the native structure of a protein is the one for which the free energy achieves the global minimum. Based on this hypothesis, many methods that search for the protein native structure define an approximation of the protein energy and use optimization algorithms that look for the protein fold that minimizes this energy. These approaches mainly differ in the type of energy approximation employed and in the characteristics of the protein modeling.
+Under specific conditions, the protein sequence folds into an unique native 3-d structure. Each possible protein fold has an associated energy. The \emph{thermodynamic hypothesis} states that the native structure of a protein is the one for which the free energy achieves the global minimum. Based on this hypothesis, many methods that search for the protein native structure define an approximation of the protein energy and use optimization algorithms that look for the protein fold that minimizes this energy. These approaches mainly differ in the type of energy approximation employed and in the characteristics of the protein modeling.
 
 
 \subsection{The HP Model}
 \label{sec:hpModel}
 
 
-The Protein Structures are very complex. Use a representation close to the real would be impossible for current computers to process the information in a reasonable time. Having this in mind, Lau and Dill \cite{lau1989lattice} created a model called \textit{Hydrophobic-Hydrophilic} Model (HP Model), to represent the proteins using simplifications. The model can be used either to represent proteins in a 2D space or 3D space.
+The Protein Structures are very complex. Using a representation close to the real would be impossible for current computers to process the information in a reasonable time. Having this in mind, Lau and Dill \cite{lau1989lattice} created a model called \textit{Hydrophobic-Hydrophilic} Model (HP Model), to represent the proteins using simplifications. The model can be used either to represent proteins in a 2D space or 3D space.
 
 
 The HP model considers two types of residues:  hydrophobic (H) residues  and hydrophilic or polar (P) residues. A protein is considered a sequence of these two types of residues, which are located in regular lattice models forming self-avoided paths. Given a pair of residues, they are considered neighbors if they are adjacent  either in the chain (connected neighbors) or  in the lattice but not connected in the chain (topological neighbors).
@@ -44,43 +44,43 @@ The HP model considers two types of residues:  hydrophobic (H) residues  and hyd
 The total number of topological neighboring positions in the lattice ($z$) is called the lattice coordination number.
 
 
-For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads. Figure~\ref{fig:PROTEXAM} shows the graphical representation of a possible configuration for  sequence  $HHHPHPPPPPH$ in a 2D space. The energy that the HP model associates with this configuration is $-1$ because there is only one $HH$ contact, arisen between the second and fifth residues.
+For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads. Figure~\ref{fig:PROTEXAM} shows the graphical representation of a possible configuration for  the sequence  $HHHPHPPPPPH$ in a 2D space. The energy that the HP model associates with this configuration is $-1$ because there is only one $HH$ contact, arisen between the second and fifth residues.
 
 
-Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used, trying to define which methods have better results in the study of the PSP Problem.
+Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used, trying to define which methods have better results in the study of the PSP (Protein Structure Prediction) Problem.
 
 
-Among these approaches, there are studies that explore the protein structure prediction combined with evolutionary algorithms like for example, Lin and Su \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy for the PSP Problem using the simplified model Hydrophobic-Polar 2D (HP-2D).
+Among these approaches, there are studies that explore the protein structure prediction combined with evolutionary algorithms. For instance, Lin and Su \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy for the PSP Problem using the simplified model Hydrophobic-Polar 2D (HP-2D).
 
 
-In other work, Lin and Su \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to HP-3D model with relative representation, optimizing the crossover and mutation operators to improve results in the Protein Folding process. The algorithm was a improved version of a GA based on a PSO, where the solutions were encouraged to move toward their own best solution.
+In other work, Lin and Su \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to HP-3D model with relative representation, optimizing the crossover and mutation operators to improve results in the Protein Folding process. The algorithm was an improved version of a GA based on a PSO, where the solutions were encouraged to move toward their own best solution.
 
 
-Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima Genetic Algorithm for PSP. The algorithm included a phenotype based crowding mechanism for the maintenance of useful diversity which increase the population's performance and granted the algorithm multiple solutions capabilities.
+Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima Genetic Algorithm for PSP. The algorithm included a phenotype based crowding mechanism for the maintenance of useful diversity which increases the population's performance and granted the algorithm multiple solutions capabilities.
 
 
-Brasil \textit{et al}.\cite{soares2011investigating} proposed an multi objective algorithm in tables and compare its performance with the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the the folding process: the van der Walls and Electrostatic functions.
+Brasil \textit{et al}.\cite{soares2011investigating} proposed an multi objective algorithm in tables and compared its performance with the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the the folding process: the van der Walls and Electrostatic functions.
 
 
-The author of \cite{gabriel2012algoritmos} also proposes the using of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation.
+The author of \cite{gabriel2012algoritmos} also proposes the use of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation.
 
-Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that use heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
-
-
-The multimeme algorithm (MMA) proposed by \cite{krasnogor2002multimeme} is a GA combined with a set fo local searches. The algorithm for each different instance or individuals in the population, select the local search method that best fits. Originally used to find solutions for the functional model protein. The algorithm was later improved with fuzy-logic-based local searches, leading the algorithm to find improved results in the PSP problem.
+Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that uses heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
 
 
-Chain growth algorithm as the pruned-enriched Rosenbluth method (PERM) \cite{hsu2003growth} is based on growing the sequence conformation by adding individuals particles aiming increase good configurations and eliminating bad ones.
+The multimeme algorithm (MMA) proposed by \cite{krasnogor2002multimeme} is a GA combined with a set of local searches. The algorithm for each different instance or individuals in the population, selects the local search method that best fits. Originally used to find solutions for the functional model protein, the algorithm was later improved with fuzy-logic-based local searches, leading the algorithm to find improved results in the PSP problem.
+
+
+The chain growth algorithm as the pruned-enriched Rosenbluth method (PERM) \cite{hsu2003growth} is based on growing the sequence conformation by adding individuals particles aiming to increase good configurations and eliminating bad ones.
 
 The ant colony optimization (ACO) \cite{shmygelska2002ant, shmygelska2003improved} is an algorithm that incorporates the use of a modeling step. In this approach, the artificial ants build conformations for a given HP protein sequence, apply a local search to improve the results and maintain a probability value based on the quality of the found solutions, the so called pheromone trail.
 
 \section{Multi-objective Optimization} \label{sec:optimization}
 
 
-Evolutionary Algorithm (EA) is a optimization and search technique, highly parallel, inspired by the Darwinian principle of natural selection and genetic reproduction. The nature principles that inspire the EAs are simple. According to the theory of C, Darwin, the principle of natural selection favors individuals with high fitness, therefore, with high probability of reproduction. Individuals with more descendants have more chance to perpetuate their genetic code in future generations. The genetic codes is what gives the identity of each individual and are represented in the chromosomes. These principles are used in the construction of computational algorithms, that searches for better solutions given a specific problem by the evolution of a population of solutions coded in artificial chromosomes -- data structures used to represent a feasible solution for a given problem in the algorithm execution \cite{pacheco1999algoritmos}.
+Evolutionary Algorithm (EA) is an optimization and search technique, highly parallel, inspired by the Darwinian principle of natural selection and genetic reproduction. The nature principles that inspire the EAs are simple. According to the theory of Charles Darwin, the principle of natural selection favors individuals with high fitness, therefore, with high probability of reproduction. Individuals with more descendants have more chance to perpetuate their genetic code in future generations. The genetic code is what gives the identity of each individual and is represented in the chromosomes. These principles are used in the construction of computational algorithms, that search for better solutions given a specific problem by the evolution of a population of solutions coded in artificial chromosomes -- data structures used to represent a feasible solution for a given problem in the algorithm execution \cite{pacheco1999algoritmos}.
 
 
-Real world problems commonly have multiple objectives to minimize/maximize and are present in most knowledge areas. To optimize multi objective problems, two or more objectives are considered which usually are conflicting. For these problems it is impossible to find one unique solution. A set of solutions is reached evaluating the Pareto dominance relation \cite{pareto} between the solutions. The main goal is to find the solutions that are non-dominated by any other. A solution dominates other, if and only if, it was better in at least one of the objectives, without being worst in any of the objectives. The set of non-dominated solutions constitutes the Pareto Front. Finding the the real Pareto Front is a NP-hard problem \cite{fonseca2005tutorial}, this way, the objective is to find a good approximation of this front.
+Real world problems commonly have multiple objectives to minimize/maximize and are present in most knowledge areas. To optimize multi objective problems, two or more objectives are considered which usually are conflicting. For these problems it is impossible to find one unique solution. A set of solutions is reached evaluating the Pareto dominance relation \cite{pareto} between the solutions. The main goal is to find the solutions that are non-dominated by any other. A solution dominates other, if and only if, it was better in at least one of the objectives, without being worst in any of the objectives. The set of non-dominated solutions constitutes the Pareto Front. Finding the real Pareto Front is a NP-hard problem \cite{fonseca2005tutorial}, this way, the objective is to find a good approximation to this front.
 
 
 Multi-Objective Evolutionary Algorithms (MOEAS) are extensions of EAs to multi objective problems that apply the concepts of Pareto dominance to create different strategies to evolve and diversify the solutions. In this work two MOEAs were used: NSGAII \cite{deb2002fast} and IBEA \cite{zitzler2004indicator}.
@@ -89,7 +89,7 @@ Multi-Objective Evolutionary Algorithms (MOEAS) are extensions of EAs to multi o
 \subsection{Non-dominated sorting Genetic Algorithm II}
 
 
-The main characteristic of this algorithm is a strong elitism mechanism, classifying at each generation every solution in different fronts according with the non-dominance relation (line 15 of Algorithm \ref{alg:nsgaII}). After the classification, solutions from the first front, are non-dominated by any other solution. Solutions from the second front are dominated only by the solutions of the first front, and so on. For solutions of the same front, the algorithm uses a Crowding Distance operator to calculate how distant are the neighbors of a given solution (line 19 of Algorithm \ref{alg:nsgaII}). Solutions with high values of Crowding Distance have priority, because they will contribute more to the population's diversity. The binary tournament selects solutions from the small front with the higher values of Crowding Distance. A new population is generated using the crossover and mutation operators (line 25 of Algorithm \ref{alg:nsgaII}).
+The main characteristic of this algorithm is a strong elitism mechanism, classifying at each generation every solution in different fronts according with the non-dominance relation (line 15 of Algorithm \ref{alg:nsgaII}). After the classification, solutions from the first front are non-dominated by any other solution. Solutions from the second front are dominated only by the solutions of the first front, and so on. For solutions of the same front, the algorithm uses a Crowding Distance operator to calculate how distant are the neighbors of a given solution (line 19 of Algorithm \ref{alg:nsgaII}). Solutions with high values of Crowding Distance have priority, because they will contribute more to the population's diversity. The binary tournament selects solutions from the small front with the higher values of Crowding Distance. A new population is generated using the crossover and mutation operators (line 25 of Algorithm \ref{alg:nsgaII}).
 
 
 \begin{algorithm}[htb!]
@@ -134,10 +134,10 @@ The main characteristic of this algorithm is a strong elitism mechanism, classif
 \subsection{IBEA (Indicator-Based Evolutionary Algorithm)}
 
 
-In the multi-objective optimization context, optimizing consists in find a front with a good approximation to the true Pareto front. However, there is no general definition about what is the true Pareto front. This way, indicators have been used to evaluate the quality of a approximation front. The \textit{hypervolume} is a example of indicator to the evaluation and comparison of fronts.
+In the multi-objective optimization context, optimizing consists in finding a front with a good approximation to the true Pareto front. However, there is no general definition about what is the true Pareto front. This way, indicators have been used to evaluate the quality of an approximation front. The \textit{hypervolume} is an example of indicator to the evaluation and comparison of fronts.
 
 
-The IBEA is an algorithm that considers the optimization by the use of quality indicators. The indicator is the way used to evaluate the non-dominated set of solutions \cite{figueiredo2013algoritmo}. To use the IBEA it is necessary define which indicator will be used to associate each ordered pair of solutions to a scalar value. One of the most used indicators is the \textit{hypervolume} due to its capacity of evaluate the convergence and diversity at the same time of the search process \cite{ishibuchi2008evolutionary}.
+The IBEA is an algorithm that considers the optimization by the use of quality indicators. The indicator is the way used to evaluate the non-dominated set of solutions \cite{figueiredo2013algoritmo}. To use the IBEA it is necessary to define which indicator will be used to associate each ordered pair of solutions to a scalar value. One of the most used indicators is the \textit{hypervolume} due to its capacity of evaluating the convergence and diversity at the same time of the search process \cite{ishibuchi2008evolutionary}.
 
 
 \begin{equation} \label{eq:ibea_fitness}
@@ -186,7 +186,7 @@ For the IBEA fitness calculation (Equation \ref{eq:ibea_fitness}), $k$ is a para
 \label{sec:proposedMethod}
 
 
-Two multi-objective approaches were designed in this chapter, using the MOEAs (NSGAII and IBEA) described on subsection \ref{sec:optimization}. The relative representation was chosen to represent the chromosomes. Integer vectors are used whereas the genes specifies which direction, relative to the previous residue, should be placed the next residue. The genes can assume only tree values (0,1,2), 0 indicates that next residue should be placed on right of the previous one, 1 indicates that the next residue should be placed on left from the previous and 2 indicates that the next residue should be placed in front of the previous one. Figure \ref{fig_sim} shows an example of a hypothetical chromosome and the path generated by it in the 2D lattice.
+Two multi-objective approaches were designed in this chapter, using the MOEAs (NSGAII and IBEA) described on subsection \ref{sec:optimization}. The relative representation was chosen to represent the chromosomes. Integer vectors are used whereas the genes specifies which direction, relative to the previous residue, should be placed the next residue. The genes can assume only tree values (0,1,2): 0 indicates that next residue should be placed on right of the previous one, 1 indicates that the next residue should be placed on left from the previous and 2 indicates that the next residue should be placed in front of the previous one. Figure \ref{fig_sim} shows an example of a hypothetical chromosome and the path generated by it in the 2D lattice.
 
 \begin{figure}[ht]
 	\centering
@@ -201,18 +201,18 @@ The first approach consisted on applying two well-known state of art MOEAs (IBEA
 In the case of the second approach the IBEA and NSGAII algorithms were modified in order to improve their results when compared with the first approach. The modifications implemented will be described next:
 
 \begin{itemize}
-	\item \textbf{Pool of operators}: The use of traditional operators usually does not guide the search to prominent regions of the search space of the HP-2D model. In order to supplement the MOEAs: a pool of operators were designed based on the literature. For every mating the crossover and mutation operators are selected randomly from the pool of operators and then applied. Also the crossover and mutation operators are always applied differently from the first approach which uses a probability of occurrence. The pool of operators will be described next:
+	\item \textbf{Pool of operators}: The use of traditional operators usually does not guide the search to prominent regions of the search space of the HP-2D model. In order to supplement the MOEAs, a pool of operators were designed based on the literature. For every mating the crossover and mutation operators are selected randomly from the pool of operators and then applied. Also the crossover and mutation operators are always applied differently from the first approach which uses a probability of occurrence. The pool of operators will be described next:
 	
 	\begin{itemize}
 		\item Single Point Crossover (1x): A single point on both parent individuals is selected. All data beyond that point in either individual will be swapped between the two parent individuals. Resulting in two distinct child individuals \cite{holland1975adaptation}.
 		
-		\item Two Points Crossover (2X): Two points are selected on both parent individuals. Everything between the two points is swapped between the parents. Building two new distinct individuals \cite{holland1975adaptation}.
+		\item Two Points Crossover (2X): Two points are selected on both parent individuals. Everything between the two points is swapped between the parents, building two new distinct individuals \cite{holland1975adaptation}.
 		
 		\item Multi Points Crossover (MPX): The MPX operator is similar to 2X, but the number of points, $c$, is a function of the sequence length, $n$, given by $c = int(n \times 0.1)$ \cite{custodio2004investigation}. The MPX operator is usually used to promote structural diversity by performing a random shuffle between individuals, although not as thorough as a uniform crossover.
 		
 		\item Bit Flip Mutation (BFM): The BFM operator selects one random gene from a parent individual and changes it to other value. Resulting in one new individual \cite{holland1975adaptation}.
 		
-		\item Local Move Mutation (LMM): The LMM operator swaps the directions between two randomly chosen consecutive genes. This operator introduces a corner movement \cite{bazzoli2004memetic}. Figure \ref{fig:operatorLMM} presents a example of application of this operator.
+		\item Local Move Mutation (LMM): The LMM operator swaps the directions between two randomly chosen consecutive genes. This operator introduces a corner movement \cite{bazzoli2004memetic}. Figure \ref{fig:operatorLMM} presents an example of application of this operator.
 		
 		
 		
@@ -262,42 +262,42 @@ In the case of the second approach the IBEA and NSGAII algorithms were modified 
 	\end{itemize}
 
 	
-	\item \textbf{Backtrack Initialization}: Traditionally the initial population of solutions are generated randomly in the presented MOEAs. This have a great potential of generating a large number of invalid solutions for the PSP problem within the HP-2D model. Solutions that are not self-avoiding walk (SAW) are said to contain collisions. If the initial population is fully generated randomly the evolutionary algorithms will spend time processing invalid solutions until getting good results. In order to subdue this problem a backtrack strategy should be applied. In this approach 20 percent of the initial population were generated using the backtrack initialization.
+	\item \textbf{Backtrack Initialization}: Traditionally the initial population of solutions are generated randomly in the presented MOEAs. The random based generation of the solutions has a great potential of generating a large number of invalid solutions for the PSP problem within the HP-2D model. Solutions that are not self-avoiding walk (SAW) are said to contain collisions. If the initial population is fully generated randomly the evolutionary algorithms will spend time processing invalid solutions until getting good results. In order to subdue this problem a backtrack strategy should be applied. In this approach 20 percent of the initial population was generated using the backtrack initialization.
 	
 \end{itemize}
 
-For both approaches the same objectives were used and will be explained  at next:
+For both approaches the same objective functions were used and will be explained  at next:
 
 \begin{itemize}
-	\item \textbf{Energy value}: This is the main objective and consist in the energy of given protein conformation.  The goal is to minimize the energy value and it is calculated as described in section X. This objective guides the search progress towards regions that the energy associate to the protein conformations are minimal. Thus, achieving protein conformations which are closest to native structure of a protein.
-	\item \textbf{Distance between the two farthest residues}: This is a secondary objective and it was inspired by the related work \cite{gabriel2012algoritmos}. The motivation for this objective is that more compact conformations tend to have more hydrophobic contacts which means a lesser energy value. The distance between two residues is calculated using the Euclidean distance.
+	\item \textbf{Energy value}: This is the main objective and consists in the energy of given protein conformation.  The goal is to minimize the energy value and it is calculated as described in section X. This objective guides the search progress towards regions that the energy associated to the protein conformations are minimal, thus, achieving protein conformations which are closest to native structure of a protein.
+	\item \textbf{Minimize the distance between the two farthest residues}: This is a secondary objective and it was inspired by the related work \cite{gabriel2012algoritmos}. The motivation for this objective is that more compact conformations tend to have more hydrophobic contacts which means a lesser energy value. The distance between two residues is calculated using the Euclidean distance.
 \end{itemize}
 
 
 
 
-The relative representation it is subject to generation of invalid solutions using the HP-2D model. A solution is considered invalid when the solution does not perform a self-avoiding walk (SAW) as mentioned before. In other words an invalid solution is when a given residue collides with another already placed on the lattice. A simple mechanism for repairing these situations was developed, the code can be seen in the Algorithm \ref{algo:reparacao}.
+The relative representation is subject to generation of invalid solutions using the HP-2D model. A solution is considered invalid when it solution does not perform a self-avoiding walk (SAW) as mentioned before. In other words, an invalid solution is when a given residue collides with another already placed on the lattice. A simple mechanism for repairing these situations was developed, and the code can be seen in the Algorithm \ref{algo:reparacao}.
 
 \begin{algorithm}[h]
 	1. Obtains the direction that next residue should be placed.\\
 	2. Verifies if this direction will cause collision.\\
-	3. If the a collision is detected, a new direction is used.\\
-	4. Repeat the step 2 and 3, until be possible to place the next residue, or if all directions were tested and cause collisions.\\
+	3. If a collision is detected, a new direction is used.\\
+	4. Repeat the steps 2 and 3, until is possible to place the next residue, or if all directions were tested and cause collisions.\\
 	5. If it was possible to place the next residue, the mechanism achieved success, if not, the solution is considered infeasible and it will be penalized in the evaluation process.
 	\caption{Mechanism to repair infeasible solutions}
 	\label{algo:reparacao}
 \end{algorithm}
 
-This mechanism was implemented because in previous experiments was observed that the number of infeasible solutions was too big. It is necessary to mention that the even with the mechanism to repair solutions, there are still infeasible solutions because the mechanism can not always repair. Thus, infeasible solutions are penalized by subtracting the number of collisions to the quantity of topological neighbors. This mechanism is used by the evaluation process of both approaches described before (MOEAs without any modifications and the MOEAs supported by the backtrack initialization and the pool of operators).
+This mechanism was implemented because in previous experiments it was observed that the number of infeasible solutions very high. It is necessary to mention that even with the mechanism to repair solutions, there are still infeasible solutions because the mechanism cannot always repair them. Thus, infeasible solutions are penalized by adding the number of collisions to the energy value. This mechanism is used by the evaluation process of both approaches described before (MOEAs without any modifications and the MOEAs supported by the backtracking initialization and the pool of operators).
 
-To evaluate and compare the performance of multi-objective algorithms, quality indicators are commonly used. In this study was used the hypervolume indicator, which considers the volume of the search space dominated by the known pareto front \cite{zitzler2003performance} of an algorithm. Higher hypervolume value means that the quality is better than one lesser hypervolume value.
+To evaluate and compare the performance of multi-objective algorithms, quality indicators are commonly used. In this study it was used the hypervolume indicator, which considers the volume of the search space dominated by the known pareto front \cite{zitzler2003performance} of an algorithm. Higher hypervolume value means that the quality is better than one lesser hypervolume value.
 
 
 
 
 \section{Experiments}
 
-This section presents the set of experiments designed to evaluate the performance of the approaches introduced in section \ref{sec:proposedMethod}. The HP sequences used in the experiments are shown in table \ref{tab:instances}, those instances have been used in previous works such as \cite{bastolla1997testing,shmygelska2002ant,unger1993genetic,cotta2003protein, santana2004protein,shmygelska2003improved,lesh2003complete}. The values presented in table \ref{tab:instances} correspond to the sequence identifier, the size of aminoacid sequence, the best known solutions ($H(x*)$) for the HP-2D model and the sequence itself. It is worthwhile to mention that sequences used in this chapter are randomly generated. Hence they do not fold to a single conformation, as natural proteins, because they are not products of natural selection \cite{chan2001perspectives}.
+This section presents the set of experiments designed to evaluate the performance of the approaches introduced in section \ref{sec:proposedMethod}. The HP sequences used in the experiments are shown in table \ref{tab:instances}. Those instances have been used in previous works such as \cite{bastolla1997testing,shmygelska2002ant,unger1993genetic,cotta2003protein, santana2004protein,shmygelska2003improved,lesh2003complete}. The values presented in table \ref{tab:instances} correspond to the sequence identifier, the size of aminoacid sequence, the best known solutions ($H(x*)$) for the HP-2D model and the sequence itself. It is worthwhile to mention the sequences used in this chapter were randomly generated. Hence they do not fold to a single conformation, as natural proteins, because they are not products of natural selection \cite{chan2001perspectives}.
 
 \begin{table}[]
 	\begin{center}
@@ -321,6 +321,27 @@ This section presents the set of experiments designed to evaluate the performanc
 			\hline
 			\end{array}$}
 	\end{center}
+\end{table}
+
+The configuration used for the MOEAs was defined based on the sequence length. For smaller sequences it was used a smaller population size and for larger sequences it was used a larger population size. The same is true in the case of the stop condition (max evaluations). Table \ref{tab:popConfiguration} presents the population size and max evaluations configurations used for each amino-acid sequence. In the case of the first approach the probability of crossover/mutation occurrence was fixed, for all sequences, in 0.9 and 0.01 respective. The second approach does not uses a probability since the operators are always applied to generate new individuals. The auxiliary population size used by the IBEA algorithm was fixed in 200 for all sequences.   
+%
+
+\begin{table}[]
+	\centering
+	\caption{Population size and max evaluations configurations for each sequence}
+	\label{tab:popConfiguration}
+	\begin{tabular}{ccccl}
+		\hline
+		Sequences & Size & \begin{tabular}[c]{@{}c@{}}Population \\ Size\end{tabular} & \begin{tabular}[c]{@{}c@{}}Max \\ Evaluations\end{tabular} & \multicolumn{1}{c}{} \\ \hline
+		sq1      & 20   & 100                                                        & 25000                                                      &                      \\ \hline
+		sq2      & 24   & 100                                                        & 25000                                                      &                      \\ \hline
+		sq3      & 25   & 500                                                        & 250000                                                     &                      \\ \hline
+		sq4      & 36   & 500                                                        & 250000                                                     &                      \\ \hline
+		sq5      & 48   & 1000                                                       & 2500000                                                    &                      \\ \hline
+		sq6      & 50   & 1000                                                       & 2500000                                                    &                      \\ \hline
+		sq7      & 60   & 2500                                                       & 2500000                                                    &                      \\ \hline
+		sq8      & 64   & 2500                                                       & 2500000                                                    &                      \\ \hline
+	\end{tabular}
 \end{table}
 
 \subsection{Comparison between the modified/traditional versions of the MOEAs}
@@ -359,7 +380,8 @@ Looking to table \ref{tab:hypervolumeResults} is possible to notice, except for 
 
 \subsection{Comparison with previous works}	
 
-This section will compare the results obtained by the MOEAs with other approaches from the previous works described on section \ref{sec:hpModel}. This section is only concerned with the first objective (Energy of given conformation), since the other works are single-objective. Table \ref{tab:comparison} presents the best results, in terms of energy, found by the modified MOEAs and also the best results obtained by the previous works.
+
+ This section presents the comparation of the results obtained by the MOEAs with other approaches from the previous works described on section \ref{sec:hpModel}, and is only concerned with the first objective. (Energy of given conformation), since the other works are single-objective. Table \ref{tab:comparison} presents the best results, in terms of energy, found by the modified MOEAs and also the best results obtained by the previous works.
 
 
 \begin{table}[]
@@ -380,7 +402,9 @@ This section will compare the results obtained by the MOEAs with other approache
 	\end{tabular}
 \end{table}
 
- For the first 3 sequences $sq1$, $sq2$ and $sq3$ the modified MOEAs (M\_NSGAII and M\_IBEA) obtained the same results that the previous works obtained. In the case of $sq4$ both M\_IBEA and M\_NSGAII obtained a value of -13 and the all other previous works obtained the optimum value of -14. For sequence $sq5$ four previous work and M\_IBEA have achieved the optimum value -23. However M\_NSGAII and the other previous works obtained a lesser value of -22. In the case of sequence $sq6$ all algorithms obtained the optimum value of -21. For sequence $sq7$ the M\_IBEA obtained -35 as the EDA \cite{santana2008protein}. However the best value found  for $sq7$, -36, were obtained by NewACO \cite{shmygelska2003improved} and PERM \cite{hsu2003growth}. For the last sequence $sq8$ the M\_IBEA obtained the optimum value of -42 which is the same obtained by EDA \cite{santana2008protein} and NewACO \cite{shmygelska2003improved}. All other approaches obtained lesser values for sequence $sq8$.
+ For the first 3 sequences $sq1$, $sq2$ and $sq3$ the modified MOEAs (M\_NSGAII and M\_IBEA) obtained the same results that the previous works obtained. In the case of $sq4$ both M\_IBEA and M\_NSGAII obtained a value of -13 and all the previous works obtained the optimum value of -14. For sequence $sq5$ four previous works and M\_IBEA have achieved the optimum value -23. However M\_NSGAII and the other previous works obtained a lesser value of -22. In the case of sequence $sq6$ all algorithms obtained the optimum value of -21. For sequence $sq7$ the M\_IBEA obtained -35 as the EDA \cite{santana2008protein}. However the best value found  for $sq7$, -36, were obtained by NewACO \cite{shmygelska2003improved} and PERM \cite{hsu2003growth}. For the last sequence $sq8$ the M\_IBEA obtained the optimum value of -42 which is the same obtained by EDA \cite{santana2008protein} and NewACO \cite{shmygelska2003improved}. All other approaches obtained lesser values for sequence $sq8$.
 
 
 \section{Conclusion}
+
+MOEAs are evolutionary algorithms that try to address the challenge of optimization of multiple objectives at the same time. They have been presenting good results with many areas of science. At this chapter two well known MOEAs were applied in order to address the PSP problem using the HP-2D model. Two  multi-objective approaches were presented: the first approach utilizes the IBEA and NSGAII algorithms as is, without any modification; the second approach consisted on modifying IBEA and NSGAII, adding backtrack initialization and a pool of operators, in order to enhance the results. Given the experiments results it became clear that the second approach was able to explore better the search space than the first approach. Also it was possible to check that the multi-objective approach using the IBEA algorithm, modified with backtrack and a pool of operators, obtained competitive results when compared with the previous works. However the multi-objective within NSGAII algorithm did not presented satisfactory results.  
