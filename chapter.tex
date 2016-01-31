@@ -8,51 +8,9 @@
 
 \section{Introduction} \label{sec:intro}
 
+%Objetivos
 
-The proteins have a fundamental task in the nature. These structures, made of amino-acids, participate in many of the most important tasks of the living cells. Proteins guarantee the correct functioning of a large number of biological entities in nature. The protein structure is the result of the so-called protein folding process in which the initially unfolded chain of amino-acids is transformed into its final structure. Under suitable conditions, this structure is uniquely determined by its sequence \cite{santana2004protein}.
-
-
-Determine the final structure of a protein in a difficult task. Given its complexity, using a representation close to the real would be impossible for current computers to process the information in a reasonable time. This is why many authors as in \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic} among others, use a simplified model to represent the protein structures. A well known model for this purpose is the \textit{Hydrophobic-Hydrophilic} model (HP model), created by Lau and Dill \cite{lau1989lattice}. Considering just two types of residues H and P in a regular lattice, becomes easier to represent a protein and work with it to simulate the folding process.
-
-
-Manipulate a protein structure represented in the HP model requires some attention in order to respect the given restrictions and avoid unfeasible conformations. Another issue is the difficulty in find good measures to verify the solution's quality. The most common measure used for the HP model is to calculate the conformation's energy. But sometimes just the energy measure is not enough, being necessary the use of a second objective to avoid treating different solutions with the same energy value as being the same, for example.
-
-
-Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used, trying to define which methods have better results.
-
-
-Lin and Su \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy based on pull-moves for the PSP Problem using the simplified model Hydrophobic-Polar 2D (HP-2D). A greedy strategy is employed to avoid inconsistency in the population and to enhance the efficiency of the algorithm. The results show that this approach has better results than the GA within comparable computational times.
-
-
-In other work, Lin and Su \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to HP-3D model with relative representation, optimizing the crossover and mutation operators to improve results in the Protein Folding process. The algorithm was a improved version of a GA based on a PSO, where the solutions were encouraged to move toward their own best solution.
-
-
-Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima Genetic Algorithm for PSP. The algorithm included a phenotype based crowding mechanism for the maintenance of useful diversity which increase the population's performance and granted the algorithm multiple solutions capabilities.
-
-
-Brasil \textit{et al}.\cite{soares2011investigating} proposed an multi objective algorithm in tables and compare its performance with a well-known multi-objective algorithm, the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the the folding process: the van der Walls and Electrostatic functions.
-
-
-The author of \cite{gabriel2012algoritmos} also proposes the using of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation. The author also proposes the use of a second objective that is to measure the distance between hydrophobic amino-acids, allowing the algorithm to distinguish between different solutions with the same energy value.
-
-
-Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that use heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
-
-
-The multimeme algorithm (MMA) proposed by \cite{krasnogor2002multimeme} is a GA combined with a set fo local searches. The algorithm for each different instance or individuals in the population, select the local search method that best fits. Originally used to find solutions for the functional model protein. The algorithm was later improved with fuzy-logic-based local searches, leading the algorithm to find improved results in the PSP problem.
-
-
-In \cite{hsu2003growth}, the author make use of a Chain growth algorithm, called pruned-enriched Rosenbluth method (PERM), that is based on growing the sequence conformation by adding individuals particles aiming to increase good configurations and eliminating bad ones.
-
-
-The ant colony optimization (ACO) \cite{shmygelska2002ant, shmygelska2003improved} is an algorithm that incorporates the use of a modeling step. In this approach, the artificial ants build conformations for a given HP protein sequence, apply a local search to improve the results and maintain a probability value based on the quality of the found solutions, the so called pheromone trail.
-
-
-This work proposes the application and comparison of two multi objective evolutionary algorithms NSGAII and IBEA \cite{zitzler2004indicator}. Using some different strategies for the operators and initialization. Considering two objectives, being the main objective minimizing the energy calculated from the HP model, and THE secondary objective minimizing the euclidean distance between amino acids of a protein. The experiment's results are compared with other well-known techniques and discussed to evaluate its performance.
-
-
-This work is organized as follows. In Section \ref{sec:proteinfolding} is presented the main aspects of the Protein Folding Problem and important information for the research. Section \ref{sec:optimization} is about Multi-Objective optimization, showing the positive aspects that can help solving the PSP Problem. In Section \ref{sec:proposedMethod} is presented the description of the proposed method, and its relation to other method presented in a previous work. The experiments are shown in Section \ref{sec:experiments} with information about the proposed method compared with other well-known works. Finally the conclusion and future works are discussed in Section \ref{sec:conclusion}.
-
+%Contribuições
 
 \section{Protein Structure Prediction} \label{sec:proteinfolding}
 
@@ -67,9 +25,10 @@ Under specific conditions, the protein sequence folds into a unique native 3-d s
 
 
 \subsection{The HP Model}
+\label{sec:hpModel}
 
 
-Lau and Dill \cite{lau1989lattice} created a model called \textit{Hydrophobic-Hydrophilic} Model (HP Model), to represent the proteins using simplifications. The model can be used either to represent proteins in a 2D space or 3D space.
+The Protein Structures are very complex. Use a representation close to the real would be impossible for current computers to process the information in a reasonable time. Having this in mind, Lau and Dill \cite{lau1989lattice} created a model called \textit{Hydrophobic-Hydrophilic} Model (HP Model), to represent the proteins using simplifications. The model can be used either to represent proteins in a 2D space or 3D space.
 
 
 The HP model considers two types of residues:  hydrophobic (H) residues  and hydrophilic or polar (P) residues. A protein is considered a sequence of these two types of residues, which are located in regular lattice models forming self-avoided paths. Given a pair of residues, they are considered neighbors if they are adjacent  either in the chain (connected neighbors) or  in the lattice but not connected in the chain (topological neighbors).
@@ -88,8 +47,32 @@ The total number of topological neighboring positions in the lattice ($z$) is ca
 For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads. Figure~\ref{fig:PROTEXAM} shows the graphical representation of a possible configuration for  sequence  $HHHPHPPPPPH$ in a 2D space. The energy that the HP model associates with this configuration is $-1$ because there is only one $HH$ contact, arisen between the second and fifth residues.
 
 
-Placing the residues in the 2D or 3D lattice can vary depending on the employed technique. There are two popular strategies used to place the residues in the space. The first is called Relative Positioning. The main idea is to place every residue but the first in relation to the previous one. The movements are defined as being \textit{left}, \textit{right} and \textit{forward} for a 2D space, and include \textit{front} and \textit{back} for a 3D space. The second technique is the Absolute Positioning, where each residue is placed giving its absolute position (x,y) or (x,y,z) in the space.
+Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used, trying to define which methods have better results in the study of the PSP Problem.
 
+
+Among these approaches, there are studies that explore the protein structure prediction combined with evolutionary algorithms like for example, Lin and Su \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy for the PSP Problem using the simplified model Hydrophobic-Polar 2D (HP-2D).
+
+
+In other work, Lin and Su \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to HP-3D model with relative representation, optimizing the crossover and mutation operators to improve results in the Protein Folding process. The algorithm was a improved version of a GA based on a PSO, where the solutions were encouraged to move toward their own best solution.
+
+
+Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima Genetic Algorithm for PSP. The algorithm included a phenotype based crowding mechanism for the maintenance of useful diversity which increase the population's performance and granted the algorithm multiple solutions capabilities.
+
+
+Brasil \textit{et al}.\cite{soares2011investigating} proposed an multi objective algorithm in tables and compare its performance with the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the the folding process: the van der Walls and Electrostatic functions.
+
+
+The author of \cite{gabriel2012algoritmos} also proposes the using of a multi objective algorithm in tables, similar to the proposed method by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation.
+
+Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that use heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
+
+
+The multimeme algorithm (MMA) proposed by \cite{krasnogor2002multimeme} is a GA combined with a set fo local searches. The algorithm for each different instance or individuals in the population, select the local search method that best fits. Originally used to find solutions for the functional model protein. The algorithm was later improved with fuzy-logic-based local searches, leading the algorithm to find improved results in the PSP problem.
+
+
+Chain growth algorithm as the pruned-enriched Rosenbluth method (PERM) \cite{hsu2003growth} is based on growing the sequence conformation by adding individuals particles aiming increase good configurations and eliminating bad ones.
+
+The ant colony optimization (ACO) \cite{shmygelska2002ant, shmygelska2003improved} is an algorithm that incorporates the use of a modeling step. In this approach, the artificial ants build conformations for a given HP protein sequence, apply a local search to improve the results and maintain a probability value based on the quality of the found solutions, the so called pheromone trail.
 
 \section{Multi-objective Optimization} \label{sec:optimization}
 
@@ -310,8 +293,9 @@ This mechanism was implemented because in previous experiments was observed that
 To evaluate and compare the performance of multi-objective algorithms, quality indicators are commonly used. In this study was used the hypervolume indicator, which considers the volume of the search space dominated by the known pareto front \cite{zitzler2003performance} of an algorithm. Higher hypervolume value means that the quality is better than one lesser hypervolume value.
 
 
-\section{Experiments} \label{sec:experiments}
 
+
+\section{Experiments}
 
 This section presents the set of experiments designed to evaluate the performance of the approaches introduced in section \ref{sec:proposedMethod}. The HP sequences used in the experiments are shown in table \ref{tab:instances}, those instances have been used in previous works such as \cite{bastolla1997testing,shmygelska2002ant,unger1993genetic,cotta2003protein, santana2004protein,shmygelska2003improved,lesh2003complete}. The values presented in table \ref{tab:instances} correspond to the sequence identifier, the size of aminoacid sequence, the best known solutions ($H(x*)$) for the HP-2D model and the sequence itself. It is worthwhile to mention that sequences used in this chapter are randomly generated. Hence they do not fold to a single conformation, as natural proteins, because they are not products of natural selection \cite{chan2001perspectives}.
 
@@ -339,9 +323,7 @@ This section presents the set of experiments designed to evaluate the performanc
 	\end{center}
 \end{table}
 
-
 \subsection{Comparison between the modified/traditional versions of the MOEAs}
-
 
 As mentioned in the end of section \ref{sec:proposedMethod} the hypervolume indicator was used in order to compare the MOEAs performance. The hypervolume results are presented on table \ref{tab:hypervolumeResults}. The hypervolume average and standard deviation, of 30 independent executions, are presented. The average values highlighted with a bold font are the highest values. 
 Looking to table \ref{tab:hypervolumeResults} is possible to notice, except for $sq1$, that for all sequences the M\_IBEA (modified version of the IBEA with backtrack and pool of operators) obtained a higher hypervolume average than the other algorithms. In the case of $sq1$ the IBEA without modifications obtained a higher value compared with the others. It is also possible to see, comparing only the NSGAII versions, that the modified version M\_NSGAII obtained better results, except for $sq1$. In general, the MOEAS with backtrack and pool of operators presented an improvement in relation to the traditional MOEAs.
@@ -401,4 +383,4 @@ This section will compare the results obtained by the MOEAs with other approache
  For the first 3 sequences $sq1$, $sq2$ and $sq3$ the modified MOEAs (M\_NSGAII and M\_IBEA) obtained the same results that the previous works obtained. In the case of $sq4$ both M\_IBEA and M\_NSGAII obtained a value of -13 and the all other previous works obtained the optimum value of -14. For sequence $sq5$ four previous work and M\_IBEA have achieved the optimum value -23. However M\_NSGAII and the other previous works obtained a lesser value of -22. In the case of sequence $sq6$ all algorithms obtained the optimum value of -21. For sequence $sq7$ the M\_IBEA obtained -35 as the EDA \cite{santana2008protein}. However the best value found  for $sq7$, -36, were obtained by NewACO \cite{shmygelska2003improved} and PERM \cite{hsu2003growth}. For the last sequence $sq8$ the M\_IBEA obtained the optimum value of -42 which is the same obtained by EDA \cite{santana2008protein} and NewACO \cite{shmygelska2003improved}. All other approaches obtained lesser values for sequence $sq8$.
 
 
-\section{Conclusion} \label{sec:conclusion}
+\section{Conclusion}
