@@ -9,7 +9,7 @@
 \section{Introduction} \label{sec:intro}
 
 
-The proteins have a fundamental task in the nature. These structures, made of amino-acids, participate in many of the most important tasks of the living cells. Proteins guarantee the correct functioning of a large number of biological entities in nature. The protein structure is the result of the so-called protein folding process in which the initially unfolded chain of amino-acids is transformed into its final structure. Under suitable conditions, this structure is uniquely determined by its sequence \cite{santana2004protein}.
+The proteins have a fundamental task in the nature, participating in many of the most important tasks of the living cells. Proteins guarantee the correct functioning of a large number of biological entities in nature. Their structures are made of amino-acids as the result of the so-called protein folding process in which the initially unfolded chain of amino-acids is transformed into its final structure. Under suitable conditions, this structure is uniquely determined by its sequence \cite{santana2004protein}.
 
 
 Determine the final structure of a protein in a difficult task. Given its complexity, using a representation close to the real would be impossible for current computers to process the information in a reasonable time. This is why many authors as in \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic} among others, use a simplified model to represent the protein structures. A well known model for this purpose is the \textit{Hydrophobic-Hydrophilic} model (HP model), created by Lau and Dill \cite{lau1989lattice}. Considering just two types of residues H and P in a regular lattice, becomes easier to represent a protein and work with it to simulate the folding process.
@@ -130,7 +130,19 @@ Multi-Objective Evolutionary Algorithms (MOEAS) are extensions of EAs to multi o
 \subsection{Non-dominated sorting Genetic Algorithm II}
 
 
-The main characteristic of this algorithm is a strong elitism mechanism, classifying at each generation every solution in different fronts according with the non-dominance relation (line 15 of Algorithm \ref{alg:nsgaII}). After the classification, solutions from the first front are non-dominated by any other solution. Solutions from the second front are dominated only by the solutions of the first front, and so on. For solutions of the same front, the algorithm uses a Crowding Distance operator to calculate how distant are the neighbors of a given solution (line 19 of Algorithm \ref{alg:nsgaII}). Solutions with high values of Crowding Distance have priority, because they will contribute more to the population's diversity. The binary tournament selects solutions from the small front with the higher values of Crowding Distance. A new population is generated using the crossover and mutation operators (line 25 of Algorithm \ref{alg:nsgaII}).
+The main characteristic of this algorithm is a strong elitism mechanism, classifying at each generation every solution in different fronts according with the non-dominance relation.
+
+
+The Algorithm receive as inputs a parameter $N$ for the population size and $T$ as max number of evaluations. It starts by creating a population of size $N$ called $P_0$. Then $P_0$ is classified according to its calculated fitness and the Non-Dominated-Sort mechanism. The classified $P_0$ is then submitted to a binary tournament operator to select the solutions called parents that will be used to generate new ones. The parent solutions pass through the crossover and mutation operators generating new solutions called children. At the end of this process the children solutions are evaluated and put in a population called $Q_0$.
+
+
+After this first step $P_0$ and $Q_0$ are put together and called as an auxiliary population $R$. Through the Non-dominated-sort, $R$ is classified creating the \textit{fronts}, where solutions from the first \textit{front} are non-dominated by any other solution, and solutions from the second front are dominated only by the solutions of the first front, and so on. For each \textit{front} its individuals are evaluated by the Crowding-Distance mechanism and those with higher values are stored in the next-generation population called $P_t$ where $t$ is the current evaluation.
+
+
+After creating and filling $P_t$ with the non-dominated solutions from all \textit{fronts}
+
+
+(line 15 of Algorithm \ref{alg:nsgaII}). After the classification, solutions from the first front are non-dominated by any other solution. Solutions from the second front are dominated only by the solutions of the first front, and so on. For solutions of the same front, the algorithm uses a Crowding Distance operator to calculate how distant are the neighbors of a given solution (line 19 of Algorithm \ref{alg:nsgaII}). Solutions with high values of Crowding Distance have priority, because they will contribute more to the population's diversity. The binary tournament selects solutions from the small front with the higher values of Crowding Distance. A new population is generated using the crossover and mutation operators (line 25 of Algorithm \ref{alg:nsgaII}).
 
 
 \begin{algorithm}[htb!]
