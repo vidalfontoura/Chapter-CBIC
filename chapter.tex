@@ -388,7 +388,7 @@ The configuration used for the MOEAs was defined based on the sequence length. F
 \subsection{Comparison between the modified/traditional versions of the MOEAs}
 
 As mentioned in the end of section \ref{sec:proposedMethod} the hypervolume indicator was used in order to compare the MOEAs performance. The hypervolume results are presented on table \ref{tab:hypervolumeResults}. The hypervolume average and standard deviation, of 30 independent executions, are presented. The average values highlighted with a bold font are the highest values. 
-Looking to table \ref{tab:hypervolumeResults} is possible to notice, except for $sq1$, that for all sequences the M\_IBEA (modified version of the IBEA with backtrack and pool of operators) obtained a higher hypervolume average than the other algorithms. In the case of $sq1$ the IBEA without modifications obtained a higher value compared with the others. It is also possible to see, comparing only the NSGAII versions, that the modified version M\_NSGAII obtained better results, except for $sq1$. In general, the MOEAS with backtrack and pool of operators presented an improvement in relation to the traditional MOEAs.
+Looking to table \ref{tab:hypervolumeResults} is possible to notice, except for $sq1$, that for all sequences the M\_IBEA (modified version of the IBEA with backtrack and pool of operators) obtained a higher hypervolume average than the other algorithms. In the case of $sq1$ the IBEA without modifications obtained a higher value compared with the others. It is also possible to see, comparing only the NSGAII versions, that the modified version M\_NSGAII obtained better results, except for $sq1$. In general, the MOEAS with backtrack and pool of operators presented an improvement in relation to the traditional MOEAs. The cells from M\_IBEA that are marked with gray presented statistical difference according to Kruskal-Wallis test \cite{mckight2010kruskal} between M\_IBEA and all other algorithms (NSGAII, M\_NSGAII and IBEA). 
 
    
 
@@ -408,10 +408,10 @@ Looking to table \ref{tab:hypervolumeResults} is possible to notice, except for 
 		& (0.129417)        & (0.124201)        & (0.148112)               & (0.155638)              \\ \hline
 		\multirow{2}{*}{sq4}      & 0.702280          & 0.740153          & 0.751755                 & \textbf{0.785728}       \\
 		& (0689832)         & (0.075271)        & (0.092427)               & (0.055607)              \\ \hline
-		\multirow{2}{*}{sq5}      & 0.707654          & \cellcolor[HTML]{C0C0C0}0.758128          & 0.733464                 & \cellcolor[HTML]{C0C0C0}\textbf{0.807637}       \\
-		& (0.082611)        & \cellcolor[HTML]{C0C0C0}(0.062315)        & (0.128757)               & \cellcolor[HTML]{C0C0C0}(0.039620)              \\ \hline
-		\multirow{2}{*}{sq6}      & 0.667771          & \cellcolor[HTML]{C0C0C0}0.774017          & 0.728699                 & \cellcolor[HTML]{C0C0C0}\textbf{0.821177}       \\
-		& (0.132218)        & \cellcolor[HTML]{C0C0C0}(0.063231)        & (0.080679)               & \cellcolor[HTML]{C0C0C0}(0.048124)              \\ \hline
+		\multirow{2}{*}{sq5}      & 0.707654          & 0.758128          & 0.733464                 & \cellcolor[HTML]{C0C0C0}\textbf{0.807637}       \\
+		& (0.082611)        & (0.062315)        & (0.128757)               & \cellcolor[HTML]{C0C0C0}(0.039620)              \\ \hline
+		\multirow{2}{*}{sq6}      & 0.667771          & 0.774017          & 0.728699                 & \cellcolor[HTML]{C0C0C0}\textbf{0.821177}       \\
+		& (0.132218)        & (0.063231)        & (0.080679)               & \cellcolor[HTML]{C0C0C0}(0.048124)              \\ \hline
 		\multirow{2}{*}{sq7}      & 0.784483          & 0.792843          & 0.801778                 & \textbf{0.810351}       \\
 		& (0.063257)        & (0.033062)        & (0.067111)               & (0.054576)              \\ \hline
 		\multirow{2}{*}{sq8}      & 0.677464          & 0.705798          & 0.7450656                & \cellcolor[HTML]{C0C0C0}\textbf{0.811439}       \\
