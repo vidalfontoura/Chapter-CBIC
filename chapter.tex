@@ -169,10 +169,13 @@ At the end, after the stop criterion is reached, the algorithm returns a set of 
 \subsection{IBEA (Indicator-Based Evolutionary Algorithm)}
 
 
-In the multi-objective optimization context, optimizing consists in finding a front with a good approximation to the true Pareto front. However, there is no general definition about what is the true Pareto front. This way, indicators have been used to evaluate the quality of an approximation front. The \textit{hypervolume} is an example of indicator to the evaluation and comparison of fronts.
+In the multi-objective optimization context, optimizing consists in finding a front with a good approximation to the \textit{True Pareto Front}. However, there is no general definition about what is the \textit{True} Pareto front. This way, indicators have been used to evaluate the quality of an approximation front. The \textit{hypervolume} is an example of indicator to the evaluation and comparison of fronts.
 
 
-The IBEA is an algorithm that considers the optimization by the use of quality indicators. The indicator is the way used to evaluate the non-dominated set of solutions \cite{figueiredo2013algoritmo}. To use the IBEA it is necessary to define which indicator will be used to associate each ordered pair of solutions to a scalar value. One of the most used indicators is the \textit{hypervolume} due to its capacity of evaluating the convergence and diversity at the same time of the search process \cite{ishibuchi2008evolutionary}.
+The IBEA is an algorithm that bases its optimization process by the use of quality indicators. This means that the indicator is the way used to evaluate the non-dominated set of solutions \cite{figueiredo2013algoritmo}.
+
+
+To use the IBEA algorithm, it is necessary to define which indicator will be used to associate each ordered pair of solutions to a scalar value. One of the most used indicators is the \textit{hypervolume} due to its capacity of evaluating the convergence and diversity at the same time of the search process \cite{ishibuchi2008evolutionary}.
 
 
 \begin{equation} \label{eq:ibea_fitness}
@@ -180,7 +183,10 @@ The IBEA is an algorithm that considers the optimization by the use of quality i
 \end{equation}
 
 
-For the IBEA fitness calculation (Equation \ref{eq:ibea_fitness}), $k$ is a parameter commonly used with a value of 0.05. The value for $F(x_i)$ corresponds to a quality loss measure of the approximation to the Pareto front if the solution $x_i$ was removed of the population \cite{figueiredo2013algoritmo}, based on the value of the quality indicator $I_{Hy}$, in this case, the \textit{hypervolume}. Based on the fitness calculation described above, the basic IBEA algorithm consists in iteratively do the selection (line 10 of Algorithm \ref{alg:ibea}), crossover, mutation (line 11 of Algorithm \ref{alg:ibea}) and environment selection, removing the worst individual from the population and updating the values of fitness of the remaining individuals (lines 4 to 8 of Algorithm \ref{alg:ibea}).
+For the IBEA fitness calculation (Equation \ref{eq:ibea_fitness}), $k$ is a scaling factor depending on $I_{Hy}$ and the underlying problem, being greater than 0, its commonly used with a value of 0.05. The value for $F(x_i)$ corresponds to a quality loss measure of the approximation to the Pareto front if the solution $x_i$ was removed of the population \cite{figueiredo2013algoritmo}, based on the value of the quality indicator $I_{Hy}$, in this case, the \textit{hypervolume}.
+
+
+The algorithm receives as parameters the population size $N$, max evaluations $T$ and scale factor $k$. It starts by creating a population $P$ of size $N$. Then it repeats the following process until reach the stop criterion: through a Binary Tournament the parents are selected to be used in the Crossover and Mutation operators to generate the children solutions and add them to the population $P$. After the reproduction step, while the population size exceeds $N$, the worst individual evaluated by the selected indicator is removed from the population, then the population's fitness is recalculated. When the algorithm stop, it will return a set of non-dominated solutions found.
 
 
 \begin{algorithm}[htb!]
