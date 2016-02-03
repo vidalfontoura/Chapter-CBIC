@@ -184,20 +184,21 @@ To use the IBEA algorithm, it is necessary to define which indicator will be use
 \end{equation}
 
 
-For the IBEA fitness calculation, the Eq. \ref{eq:ibea_fitness} is used to calculate the contribution of the population to the hypervolume indicator, where $k$ is a scaling factor depending on $I_{Hy}$ that is the quality indicator, and the underlying problem, being greater than 0, its commonly used with a value of 0.05. The value for $F(x_i)$ corresponds to a quality loss measure of the approximation to the Pareto front if the solution $x_i$ was removed of the population \cite{figueiredo2013algoritmo}, based on the value of $I_{Hy}$, in this case, the \textit{hypervolume}.
+The IBEA fitness equation is given by Eq. \ref{eq:ibea_fitness} and is used to calculate the contribution of a given solution to the indicator value of a population, where $k$ is a scaling factor depending on $I_{Hy}$, that is the quality indicator, and the underlying problem, being greater than 0, its commonly used with a value of 0.05. The value for $F(x_i)$ corresponds to a quality loss measure of the approximation to the Pareto front if the solution $x_i$ was removed of the population \cite{figueiredo2013algoritmo}, based on the value of $I_{Hy}$, in this case, the \textit{hypervolume}.
 
 
-The Algorithm \ref{alg:ibea} receives as parameters the population size $N$, max evaluations $T$ and scale factor $k$. It starts by creating a population $P$ of size $N$. Then it repeats the following process until reach the stop criterion: through a Binary Tournament the parents are selected to be used in the Crossover and Mutation operators to generate the children solutions and add them to a auxiliary population $\overline P$. After the reproduction step $\overline P$ is added to $P$. While the size of $P$ exceeds $N$, the worst individual evaluated by the selected indicator is removed from the population, then the population's fitness is recalculated. When the algorithm stop, it will return a set of non-dominated solutions found.
-%TODO falar da pop aux
-%TODO melhorar parte da pop aux
+The Algorithm \ref{alg:ibea} receives as parameters the population size $N$, max evaluations $T$ and scale factor $k$. It starts by creating a population $P$ of size $N$. Then it repeats the following process until reach the stop criterion: through a Binary Tournament the parents are selected to be used in the Crossover and Mutation operators to generate the children solutions and add them to a auxiliary population $\overline P$. After the reproduction step $\overline P$ is added to $P$. While the size of $P$ exceeds $N$, the worst individual evaluated by the selected indicator is removed from the population, then the population fitness is recalculated. When the algorithm stop, it will return a set of non-dominated solutions found.
+
 
 \begin{algorithm}[htb!]
 	\begin{algorithmic}[1]
 	\State{$N \gets$ Population Size}
+	\State{$\overline N \gets$ AuxiliaryPopulationSize}
 	\State{$T \gets$ Max Evaluations}
 	\State{$k \gets$ Scale factor of Fitness}
 	
 	\State{$P \gets$ CreatePopulation($N$);}
+	\State{$\overline P \gets$ CreateEmptyAuxiliaryPopulation($\overline N$);}
 	\State{$m \gets 0$}
 	\State{CalculateFitness($P$);}
 	
