@@ -1,7 +1,8 @@
-\chapterauthor{Author Name1}{Affiliation text1}
-\chapterauthor{Author Name2}{Affiliation text2}
-\chapterauthor{Author Name3}{Affiliation text3}
-\chapterauthor{Author Name4}{Affiliation text4}
+\chapterauthor{Ricardo H. R. Lima}{Federal University of Paran\'a}
+\chapterauthor{Vidal Fontoura}{Federal University of Paran\'a}
+\chapterauthor{Aurora Pozo}{Federal University of Paran\'a}
+\chapterauthor{Roberto Santana}{University of the Basque Country}
+
 
 \chapter{Multi objective evolutionary algorithms applied to the Protein Structure Prediction Problem}
 
@@ -12,23 +13,23 @@
 The proteins have a fundamental task in the nature, participating in many of the most important tasks of the living cells. Proteins guarantee the correct functioning of a large number of biological entities in nature. Their structures are made of amino-acids as the result of the so-called protein folding process in which the initially unfolded chain of amino-acids is transformed into its final structure. Under suitable conditions, this structure is uniquely determined by its sequence \cite{santana2004protein}.
 
 
-The Determination the final structure of a protein in a difficult task. Given its complexity, using a representation close to the real would be impossible for current computers to process the information in a reasonable time. This is why many authors as in \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic} among others, use a simplified model to represent the protein structures. A well known model for this purpose is the \textit{Hydrophobic-Hydrophilic} model (HP model), created by Lau and Dill \cite{lau1989lattice}. Considering just two types of residues H and P in a regular lattice, becomes easier to represent a protein and work with it to simulate the folding process.
+The Determination of the final structure of a protein in a difficult task. Given its complexity, using a representation close to the real would be impossible for current computers to process the information in a reasonable time. This is why many authors as in \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic} among others, use a simplified model to represent the protein structures. A well known model for this purpose is the \textit{Hydrophobic-Hydrophilic} model (HP model), created by Lau and Dill \cite{lau1989lattice}. Considering just two types of residues H and P in a regular lattice, becomes easier to represent a protein and work with it to simulate the folding process.
 
 
-The Manipulation a protein structure represented in the HP model requires some attention in order to respect the given restrictions and avoid unfeasible conformations. Another issue is the difficulty in finding good measures to verify the quality of the solution. The most common measure used for the HP model is to calculate the conformation's energy. But sometimes just the energy measure is not enough, being necessary the use of a second objective to avoid treating different solutions with the same energy value as being the same, for example.
+The Manipulation of a protein structure represented in the HP model requires some attention in order to respect the given restrictions and avoid unfeasible conformations. Another issue is the difficulty in finding good measures to verify the quality of the solution. The most common measure used for the HP model is to calculate the conformation's energy. But sometimes just the energy measure is not enough, being necessary the use of a second objective to avoid treating different solutions with the same energy value as being the same, for example.
 
 
-Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used, trying to define which methods have better results.
-%TODO referencias de trabalhos mono e multi
+Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic}, trying to define which methods have better results.
+
 
 However, many of these approaches make use only of some well-known algorithms like Genetic Algorithm, Particle Swarm Optimization and Ant Colony Optimization. This leave a window of opportunities speaking about other classic algorithms like NSGAII \cite{zitzler1998multiobjective} and IBEA \cite{zitzler2004indicator} for example. The main difference between the mentioned methods, is that NSGAII and IBEA are multi-objective algorithms, and different from a GA, have more sophisticated mechanisms to evolve the population and try to improve the solutions.
 
 
-This work proposes the application and comparison of a multi-objective approach to the Protein Folding Problem, considering two objectives. The main objective is to minimize the energy calculated from the HP model, and the second objective minimize the euclidean distance between amino acids of a protein. Were used two mentioned evolutionary algorithms NSGAII and IBEA, using some different strategies for the operators and initialization. The experiment's results are compared with other well-known techniques and discussed to evaluate its performance.
-%TODO colocar algoritmos antes como sujeito
-%TODO apostrofo
+This work proposes the application and comparison of a multi-objective approach to the Protein Folding Problem, considering two objectives. The main objective is to minimize the energy calculated from the HP model, and the second objective minimize the euclidean distance between amino acids of a protein. The evolutionary algorithms NSGAII and IBEA were used, considering some different strategies for the operators and initialization. The result of the experiments are compared with other well-known techniques and discussed to evaluate its performance.
+
 
 This work is organized as follows. In Section \ref{sec:proteinfolding} is presented the main aspects of the Protein Folding Problem and important information for the research. Section \ref{sec:optimization} is about Multi-Objective optimization, showing the positive aspects that can help solving the PSP Problem. In Section \ref{sec:proposedMethod} is presented the description of the proposed method, and its relation to other method presented in a previous work. The experiments are shown in Section \ref{sec:experiments} with information about the proposed method compared with other well-known works. Finally the conclusion and future works are discussed in Section \ref{sec:conclusion}.
+
 
 \section{Protein Structure Prediction} \label{sec:proteinfolding}
 
@@ -39,8 +40,8 @@ Proteins are macromolecules made out of  twenty different amino acids, also refe
 Amino acids are combined to form sequences which are considered the primary structure of the peptides or proteins. The secondary structure is the locally ordered structure brought via hydrogen bounding mainly within the peptide backbone. The most common secondary structure elements in proteins are the alpha helix and the beta sheet. The tertiary structure is the global folding of a single polypeptide chain.
 
 
-Under specific conditions, the protein sequence folds into an unique native 3-d structure. Each possible protein fold has an associated energy. The \emph{thermodynamic hypothesis} states that the native structure of a protein is the one for which the free energy achieves the global minimum. Based on this hypothesis, many methods that search for the protein native structure define an approximation of the protein energy and use optimization algorithms that look for the protein fold that minimizes this energy. These approaches mainly differ in the type of energy approximation employed and in the characteristics of the protein modeling.
-%TODO referencias para many methods
+Under specific conditions, the protein sequence folds into an unique native 3-D structure. Each possible protein fold has an associated energy. The \emph{thermodynamic hypothesis} states that the native structure of a protein is the one for which the free energy achieves the global minimum. Based on this hypothesis, many methods \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic} that search for the protein native structure define an approximation of the protein energy and use optimization algorithms that look for the protein fold that minimizes this energy. These approaches mainly differ in the type of energy approximation employed and in the characteristics of the protein modeling.
+
 
 \subsection{The HP Model} \label{sec:hpModel}
 
@@ -169,24 +170,24 @@ At the end, after the stop criterion is reached, the algorithm returns a set of 
 \subsection{IBEA (Indicator-Based Evolutionary Algorithm)}
 
 
-In the multi-objective optimization context, optimizing consists in finding a front with a good approximation to the \textit{True Pareto Front}. However, there is no general definition about what is the \textit{True} Pareto front. This way, indicators have been used to evaluate the quality of an approximation front. The \textit{hypervolume} is an example of indicator to the evaluation and comparison of fronts.
+In the multi-objective context, optimizing consists in finding a front with good approximation to the \textit{True Pareto Front}. However, there is no general definition about what is the \textit{True} Pareto front. This way, indicators have been used to evaluate the quality of an approximation front. The \textit{hypervolume} is an example of indicator to the evaluation and comparison of fronts.
 
 
 The IBEA is an algorithm that bases its optimization process by the use of quality indicators. This means that the indicator is the way used to evaluate the non-dominated set of solutions \cite{figueiredo2013algoritmo}.
 
 
 To use the IBEA algorithm, it is necessary to define which indicator will be used to associate each ordered pair of solutions to a scalar value. One of the most used indicators is the \textit{hypervolume} due to its capacity of evaluating the convergence and diversity at the same time of the search process \cite{ishibuchi2008evolutionary}.
-%TODO explicar melhor a formula oq é
+
 
 \begin{equation} \label{eq:ibea_fitness}
 	F(x_i) = \sum_{x_j \in (P-x_i)} {-e^\frac{-I_{Hy}(x_j,x_i)}{k}}
 \end{equation}
 
 
-For the IBEA fitness calculation (Equation \ref{eq:ibea_fitness}), $k$ is a scaling factor depending on $I_{Hy}$ and the underlying problem, being greater than 0, its commonly used with a value of 0.05. The value for $F(x_i)$ corresponds to a quality loss measure of the approximation to the Pareto front if the solution $x_i$ was removed of the population \cite{figueiredo2013algoritmo}, based on the value of the quality indicator $I_{Hy}$, in this case, the \textit{hypervolume}.
+For the IBEA fitness calculation, the Eq. \ref{eq:ibea_fitness} is used to calculate the contribution of the population to the hypervolume indicator, where $k$ is a scaling factor depending on $I_{Hy}$ that is the quality indicator, and the underlying problem, being greater than 0, its commonly used with a value of 0.05. The value for $F(x_i)$ corresponds to a quality loss measure of the approximation to the Pareto front if the solution $x_i$ was removed of the population \cite{figueiredo2013algoritmo}, based on the value of $I_{Hy}$, in this case, the \textit{hypervolume}.
 
 
-The Algorithm \ref{alg:ibea} receives as parameters the population size $N$, max evaluations $T$ and scale factor $k$. It starts by creating a population $P$ of size $N$. Then it repeats the following process until reach the stop criterion: through a Binary Tournament the parents are selected to be used in the Crossover and Mutation operators to generate the children solutions and add them to the population $P$. After the reproduction step, while the population size exceeds $N$, the worst individual evaluated by the selected indicator is removed from the population, then the population's fitness is recalculated. When the algorithm stop, it will return a set of non-dominated solutions found.
+The Algorithm \ref{alg:ibea} receives as parameters the population size $N$, max evaluations $T$ and scale factor $k$. It starts by creating a population $P$ of size $N$. Then it repeats the following process until reach the stop criterion: through a Binary Tournament the parents are selected to be used in the Crossover and Mutation operators to generate the children solutions and add them to a auxiliary population $\overline P$. After the reproduction step $\overline P$ is added to $P$. While the size of $P$ exceeds $N$, the worst individual evaluated by the selected indicator is removed from the population, then the population's fitness is recalculated. When the algorithm stop, it will return a set of non-dominated solutions found.
 %TODO falar da pop aux
 %TODO melhorar parte da pop aux
 
@@ -203,7 +204,8 @@ The Algorithm \ref{alg:ibea} receives as parameters the population size $N$, max
 	\While{$m \ge T$ or other stop criterion is reached}
 		
 		\State{$\overline P \gets$ BinaryTournament($P$);}
-		\State{$P \gets$ CrossoverMutation($\overline P$);}
+		\State{$\overline P \gets$ CrossoverMutation($\overline P$);}
+		\State{$P \gets P \cup \overline P$}
 		\State{$m \gets m+1$}
 		
 		\While{Size($P$) $> N$}
