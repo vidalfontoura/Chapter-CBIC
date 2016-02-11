@@ -16,7 +16,7 @@ Proteins play a fundamental task in nature, participating in many of the most im
 
 
 %Given its complexity, using a representation close to the real would be impossible for current computers to process the information in a reasonable time.
-The determination of the final structure of a protein in a difficult task. Although very detailed representation of protein exists and can be used to model the protein folding, these representations are computationally very costly. This is why many authors as in \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic} among others, use simplified models to represent the protein structures. A well known model for this purpose is the \textit{Hydrophobic-Hydrophilic} model (HP model), created by Lau and Dill \cite{lau1989lattice}. Considering just two types of residues H and P in a regular lattice, becomes easier to represent a protein and work with it to simulate the folding process.
+The determination of the final structure of a protein is a difficult task. Although very detailed representation of protein exists and can be used to model the protein folding, these representations are computationally very costly. This is why many authors as in \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic} among others, use simplified models to represent the protein structures. A well known model for this purpose is the \textit{Hydrophobic-Hydrophilic} model (HP model), created by Lau and Dill \cite{lau1989lattice}. Considering just two types of residues H and P in a regular lattice, becomes easier to represent a protein and work with it to simulate the folding process.
 
 
 The manipulation of a protein structure represented in the HP model requires some attention in order to respect the given restrictions and avoid unfeasible conformations. Another issue is the difficulty in finding good measures to verify the quality of the solution. The most common measure used for the HP model is to calculate the conformation's energy. But sometimes just the energy measure is not enough, being necessary the use of a second objective to avoid treating different solutions with the same energy value as being the same, for example.
@@ -25,7 +25,9 @@ The manipulation of a protein structure represented in the HP model requires som
 Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic}, trying to define which methods have better results.
 
 
-However, many of these approaches make use only of some well-known algorithms like Genetic Algorithm, Particle Swarm Optimization and Ant Colony Optimization. This leave a window of opportunities speaking about other classic algorithms like NSGAII \cite{zitzler1998multiobjective} and IBEA \cite{zitzler2004indicator} for example. The main difference between the mentioned methods, is that NSGAII and IBEA are multi-objective algorithms, and different from a GA, have more sophisticated mechanisms to evolve the population and try to improve the solutions.
+However, many of these approaches make use only of some well-known algorithms like Genetic Algorithm, Particle Swarm Optimization and Ant Colony Optimization. Also there is a lack of works that explore multi-objective approaches. Gabriel \textit{et al}. \cite{gabriel2012algoritmos} presented an multi-objective approach that enables to distinguish between conformations with the same energy value but with different compactness. The multi-objective formulation presented by  Gabriel \textit{et al}. \cite{gabriel2012algoritmos} introduces a second objective which is concerned about the compactness of proteins structures. The multi-objective algorithm proposed by \cite{gabriel2012algoritmos} is not pareto dominance based \cite{pareto}.
+
+ This leave a window of opportunities speaking about classic pareto based algorithms like NSGAII \cite{zitzler1998multiobjective} and IBEA \cite{zitzler2004indicator} for example. The main difference between the mentioned methods, is that NSGAII and IBEA are multi-objective algorithms, and different from a GA, have more sophisticated mechanisms to evolve the population and try to improve the solutions.
 
 
 This work proposes the application and comparison of a multi-objective approach to the Protein Folding Problem, considering two objectives. The main objective is to minimize the energy calculated from the HP model, and the second objective minimize the euclidean distance between amino acids of a protein. The evolutionary algorithms NSGAII and IBEA were used, considering some different strategies for the operators and initialization. The results of the experiments are compared with other well-known techniques and discussed to evaluate its performance.
@@ -109,7 +111,7 @@ What this work proposes is the use of other well-known algorithms for multi-obje
 An Evolutionary Algorithm (EA) is an optimization and search technique, highly parallel, inspired by the Darwinian principle of natural selection and genetic reproduction. The nature principles that inspire the EAs are simple. According to the theory of Charles Darwin, the principle of natural selection favors individuals with high fitness, therefore, they have high probability of reproduction. Individuals with more descendants have more chance to perpetuate their genetic code in future generations. The genetic code is what gives the identity of each individual and is represented in the chromosomes. These principles are used in the construction of computational algorithms, that search for better solutions given a specific problem by the evolution of a population of solutions encoded in artificial chromosomes -- data structures used to represent a feasible solution for a given problem in the algorithm execution \cite{pacheco1999algoritmos}.
 
 
-Real world problems commonly have multiple objectives to minimize/maximize and are present in many areas of expertise. To optimize multi objective problems, two or more objectives are considered which are usually conflicting. For these problems it is impossible to find one unique solution. A set of solutions is reached evaluating the Pareto dominance relation \cite{pareto} between the solutions. The main goal is to find the solutions that are non-dominated by any other. A solution dominates other, if and only if, it was better in at least one of the objectives, without being worst in any of the objectives. The set of non-dominated solutions constitutes the Pareto Front. Finding the real Pareto Front is an NP-hard problem \cite{fonseca2005tutorial}, this way, the objective is to find a good approximation to this front.
+In general, real world problems have multiple objectives to minimize/maximize and are present in many areas of expertise. To optimize multi objective problems, two or more objectives are considered which are usually conflicting. For these problems it is impossible to find one unique solution. A set of solutions is reached evaluating the Pareto dominance relation \cite{pareto} between the solutions. The main goal is to find the solutions that are non-dominated by any other. A solution dominates other, if and only if, it was better in at least one of the objectives, without being worst in any of the objectives. The set of non-dominated solutions constitutes the Pareto Front. Finding the real Pareto Front is an NP-hard problem \cite{fonseca2005tutorial}, this way, the objective is to find a good approximation to this front.
 
 
 Multi-Objective Evolutionary Algorithms (MOEAS) are extensions of EAs for multi objective problems that apply the concepts of Pareto dominance to create different strategies to evolve and diversify the solutions. In this work two MOEAs were used: NSGAII \cite{deb2002fast} and IBEA \cite{zitzler2004indicator}.
@@ -260,7 +262,7 @@ In the case of the second approach the IBEA and NSGAII algorithms were modified 
 		
 		\item Two Point Crossover (2X): Two points are selected on both parent individuals. Everything between the two points is swapped between the parents, building two new distinct individuals \cite{holland1975adaptation}.
 		
-		\item Multi Points Crossover (MPX): The MPX operator is similar to 2X, but the number of points, $c$, is a function of the sequence length, $n$, given by $c = int(n \times 0.1)$ \cite{custodio2004investigation}. The MPX operator is usually used to promote structural diversity by performing a random shuffle between individuals, although not as thorough as a uniform crossover.
+		\item Multi Point Crossover (MPX): The MPX operator is similar to 2X, but the number of points, $c$, is a function of the sequence length, $n$, given by $c = int(n \times 0.1)$ \cite{custodio2004investigation}. The MPX operator is usually used to promote structural diversity by performing a random shuffle between individuals, although not as thorough as a uniform crossover.
 		
 		\item Bit Flip Mutation (BFM): The BFM operator selects one random gene from a parent individual and changes it to other value. Resulting in one new individual \cite{holland1975adaptation}.
 		
@@ -298,7 +300,7 @@ In the case of the second approach the IBEA and NSGAII algorithms were modified 
 		
 
 		
-		\item Opposite Mutation (OM): This operator changes a random number of consecutive genes to its inverse position. In the case of the relative representation to the HP-2D model, only left and right residues can be mapped to its inverse. Figure \ref{fig:operatorOM} presents an example of application of this operator.
+		\item Opposite Mutation (OM): This operator changes a random number of consecutive genes to its inverse position. In the case of the relative representation to the HP-2D model, only left and right directions can be mapped to its inverse. Figure \ref{fig:operatorOM} presents an example of application of this operator.
 		
 		
 		
@@ -328,11 +330,11 @@ For both approaches the same objective functions were used and will be explained
 \end{itemize}
 
 
-The relative representation allows the generation of invalid solutions using the HP-2D model. A solution is considered invalid when it solution does not perform a self-avoiding walk (SAW) as mentioned before. In other words, an invalid solution is when a given residue collides with another already placed on the lattice. A simple mechanism for repairing these situations was developed, and the code can be seen in the Algorithm \ref{algo:reparacao}.
+The relative representation allows the generation of invalid solutions using the HP-2D model. A solution is considered invalid when it solution does not perform a SAW as mentioned before. In other words, an invalid solution is when a given residue collides with another already placed on the lattice. A simple mechanism for repairing these situations was developed, and the code can be seen in the Algorithm \ref{algo:reparacao}.
 
 
 \begin{algorithm}[h]
-	1. The direction of the next residue should be placed is obtained 
+	1. The position that the next residue should be placed is obtained 
 	2. Verification if the direction selected will cause collision.\\
 	3. If a collision is detected, a new direction is used.\\
 	4. Repeat the steps 2 and 3, until is possible to place the next residue, or if all directions were tested and cause collisions.\\
@@ -344,7 +346,7 @@ The relative representation allows the generation of invalid solutions using the
 
 This mechanism was implemented because in previous experiments it was observed that the number of infeasible solutions was very high. It is necessary to mention that even with the mechanism to repair solutions, there are still infeasible solutions because the mechanism cannot always repair them. Thus, infeasible solutions are penalized by adding the number of collisions to the energy value. This mechanism is used by the evaluation process of both approaches described before (MOEAs without any modifications and the MOEAs supported by the backtracking initialization and the pool of operators).
 
-To evaluate and compare the performance of multi-objective algorithms, quality indicators are commonly used. In this study it was used the hypervolume indicator, which considers the volume of the search space dominated by the known Pareto front \cite{zitzler2003performance} of an algorithm. Higher hypervolume value means that the quality of an algorithm is better than one with lower hypervolume value.
+To evaluate and compare the performance of multi-objective algorithms, quality indicators are commonly used. In this study it was used the hypervolume indicator, which considers the volume of the search space dominated by the known pareto front \cite{zitzler2003performance} of an algorithm. Higher hypervolume value means that the quality of an algorithm is better than one with lower hypervolume value.
 
 
 Both approaches were implemented using the open source architecture from  jMetal framework \cite{durillo2011jmetal}.  jMetal is easy to extend, has a well-organized structure and also an active community. 
@@ -380,7 +382,7 @@ This section presents the set of experiments designed to evaluate the performanc
 \end{table}
 
 The configuration used for the MOEAs was defined based on the sequence length. For smaller sequences it was used a smaller population size and for larger sequences it was used a larger population size. The same is true in the case of the stop condition (max evaluations). Table \ref{tab:popConfiguration} presents the population size and maximum number of evaluations used for each amino-acid sequence. In the case of the first approach the probability of crossover/mutation occurrence was fixed, for all sequences, in 0.9 and 0.01 respective. The second approach does not uses a probability since the operators are always applied to generate new individuals. The auxiliary population size used by the IBEA algorithm was fixed in 200 for all sequences.   
-%
+
 
 \begin{table}[]
 	\centering
