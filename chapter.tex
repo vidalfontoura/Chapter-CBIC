@@ -26,13 +26,13 @@ The manipulation of a protein structure represented in the HP model requires som
 
 Different heuristic approaches have been developed to decrease the computational complexity related to the protein structure determination process. Mono and Multi-objective methods have been used \cite{custodio2004investigation, hsu2003growth, krasnogor2002multimeme, lin2011protein, unger1993genetic, gabriel2012algoritmos}, trying to define which methods have better results.
 
- These approaches make use of optimization techniques like Genetic Algorithm, Particle Swarm Optimization, Ant Colony Optimization, Memetic Genetic Algorithm, and Multi-Objective Evolutionary Algorithm. However there is lack of works that explore multi-objective approaches and this motivated the presented chapter. 
+ These approaches make use of optimization techniques like Genetic Algorithms, Ant Colony Optimization, Memetic Genetic Algorithms, and Multi-Objective Evolutionary Algorithms. However there is lack of works that explore multi-objective approaches and this motivated the presented chapter. 
 
  
 This work proposes the application and comparison of a multi-objective approach to the Protein Folding Problem, considering two objectives. The main objective is to minimize the energy calculated from the HP model, and the second objective consists of minimizing the euclidean distance between amino acids of a protein. The introduction of the second objective was inspired by the work of Gabriel et al. [12], in which it is mentioned that the evaluation of a structure represented by the HP model considers only the number of hydrophobic contacts, what does not enable the optimization algorithms to distinguish between structures with the same number of hydrophobic contacts. Another motivation for using the second objective is that more compact structures tend to have more hydrophobic contacts: as lower the euclidean distance between the amino acids, more compact the whole conformation will be.
 
   
-Two well-known pareto based multi-objective evolutionary algorithms (MOEAs), NSGAII and IBEA,  were used, because of their success when applied on the domain of other problems. Two versions of each algorithm were evaluated: one with the algorithms as they were originally specified and other with modifications in the initialization and mating process. Another motivation for this chapter was the use of pareto based algorithms in order to explore the performance of this type of algorithms when applied to the PSP problem.
+Two pareto based multi-objective evolutionary algorithms (MOEAs), NSGAII and IBEA,  were used, because they are well known MOEAs \cite{CoelloCoello2007} and also because of their success when applied on the domain of other problems. Two versions of each algorithm were evaluated: one with the algorithms as they were originally specified and other with modifications in the initialization and mating process. Another motivation for this chapter was the use of pareto based algorithms in order to explore the performance of this type of algorithms when applied to the PSP problem.
    
 
 
