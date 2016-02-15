@@ -87,19 +87,18 @@ For the HP model, an energy function that  measures the interaction between topo
 Among many works related to the Protein Folding Problem, here are some examples of authors and the approaches that have been used to solve it.
 
 
-Lin and Su \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy based on pull-moves for the PSP Problem using the simplified model Hydrophobic-Polar 2D (HP-2D). A greedy strategy was employed to avoid inconsistency in the population and to enhance the efficiency of the algorithm. The results show that this approach has better results than the GA within comparable computational times.
+%Lin and Su \cite{li2012genetic} proposed an mono objective EA (Evolutionary Algorithm) working with a local search strategy based on pull-moves for the PSP Problem using the simplified model Hydrophobic-Polar 2D (HP-2D). A greedy strategy was employed to avoid inconsistency in the population and to enhance the efficiency of the algorithm. The results show that this approach has better results than the GA within comparable computational times.
 
 
-In other work, Lin and Su \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to HP-3D model with relative representation, optimizing the crossover and mutation operators to improve results in the protein folding process. The algorithm was an improved version of a GA based on a PSO, where the solutions were based to move toward their own best solution.
+%In other work, Lin and Su \cite{lin2011protein} applied a hybrid genetic-based PSO algorithm to HP-3D model with relative representation, optimizing the crossover and mutation operators to improve results in the protein folding process. The algorithm was an improved version of a GA based on a PSO, where the solutions were based to move toward their own best solution.
 
 
-Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima Genetic Algorithm for PSP. The algorithm included a phenotype based crowding mechanism for the maintenance of useful diversity which increases the population's performance and granted the algorithm multiple solutions capabilities instead of.
+%Cust\'{o}dio and Dardenne \cite{custodio2014multiple} proposed a Multiple Minima Genetic Algorithm for PSP. The algorithm included a phenotype based crowding mechanism for the maintenance of useful diversity which increases the population's performance and granted the algorithm multiple solutions capabilities instead of.
 
 
-Brasil \textit{et al}.\cite{soares2011investigating} proposed a multi objective algorithm in tables and compare its performance with a well-known multi-objective algorithm, the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the folding process: the van der Walls and Electrostatic functions.
+%Brasil \textit{et al}.\cite{soares2011investigating} proposed a multi objective algorithm in tables and compare its performance with a well-known multi-objective algorithm, the NSGAII \cite{deb2002fast}, optimizing two energy functions, both very important for the folding process: the van der Walls and Electrostatic functions.
 
 
-The author of \cite{gabriel2012algoritmos} also proposes the use of a multi objective algorithm in tables, similar to the method proposed by \cite{soares2011investigating}, however, using the HP model for the representation and solution evaluation. The author also proposes the use of a second objective that is to measure the distance between hydrophobic amino-acids, allowing the algorithm to distinguish between different solutions with the same energy value.
 
 
 Unger and Moult \cite{unger1993genetic} described a genetic algorithm (GA) that uses heuristic-based operators for crossover and mutation for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. Although the good results, the GA was unable to find the optimal solution for the longest instances considered.
@@ -113,8 +112,14 @@ In \cite{hsu2003growth}, the author makes use of a Chain growth algorithm, calle
 
 The ant colony optimization (ACO) \cite{shmygelska2002ant, shmygelska2003improved} is an algorithm that incorporates the use of a modeling step. In this approach, the artificial ants build conformations for a given HP protein sequence, apply a local search to improve the results and maintain a probability value based on the quality of the found solutions, the so called pheromone trail.
 
+Gabriel \textit{et al}. \cite{gabriel2012algoritmos} proposes the use of a table-based multi objective evolutionary algorithm initially introduced by \cite{delbem2002restabelecimento}, using the HP-3D model for the representation and solution evaluation. The author also proposes the use of a second objective that aims to measure the distance between hydrophobic amino-acids, allowing the algorithm to distinguish between different solutions with the same energy value.
 
-What this work proposes is the use of other well-known algorithms for multi-objective problems, considering the energy minimization and minimization of the size of a conformation as objectives, to analyze and compare its results to the values found in other works considered the state of the art.
+
+The present chapter proposes the use of two well-known MOEAs, that have been presenting good results when applied to other domains of problems. The main difference between this chapter and the related works \cite{hsu2003growth,krasnogor2002multimeme,shmygelska2002ant,shmygelska2003improved,unger1993genetic} is the multi-objective formulation. The work of Gabriel \textit{et al}. \cite{gabriel2012algoritmos} inspired the addition of a second objective in the approach that will be presented in this chapter. Although similar, the multi-objective formulation of this chapter is simpler, because it only considers the maximum distance between residues whereas \cite{gabriel2012algoritmos} also considers the average distance between residues. 
+Another remarkable difference are the pareto-based algorithms NSGAII and IBEA that were used in this chapter whilst  Gabriel \textit{et al}. \cite{gabriel2012algoritmos} used a MOEA proposed by other author.    
+
+
+%What this work proposes is the use of other well-known algorithms for multi-objective problems, considering the energy minimization and minimization of the size of a conformation as objectives, to analyze and compare its results to the values found in other works considered the state of the art.
 
 
 \section{Multi-objective Optimization} \label{sec:optimization}
@@ -463,7 +468,30 @@ This section presents the comparison of the results obtained by the MOEAs with o
 	\label{tab:comparison}
 	\begin{tabular}{ccccccccc}
 		\hline
-		inst                    & M\_IBEA      & M\_NSGAII    & EDA          & GA           & MMA          & ACO          & NewACO       & PERM         \\ \hline
+		inst                    & M\_IBEA      & M\_NSGAII    & \begin{tabular}[c]{@{}c@{}}EDA \\ 
+			\cite{santana2008protein}
+			\end{tabular}           & 
+			
+			\begin{tabular}[c]{@{}c@{}}GA \\ 
+				 \cite{unger1993genetic}
+			\end{tabular}   
+			
+			  & 	\begin{tabular}[c]{@{}c@{}} MMA \\ 
+				\cite{krasnogor2002multimeme}  
+			  \end{tabular}        
+			  &
+			  	\begin{tabular}[c]{@{}c@{}}  ACO \\ 
+			  		\cite{shmygelska2002ant} 
+			  	\end{tabular} 
+			  & 
+			  	\begin{tabular}[c]{@{}c@{}}  NewACO\\ 
+			  		\cite{ shmygelska2003improved} 
+			  	\end{tabular}
+			  & 
+			  \begin{tabular}[c]{@{}c@{}}  PERM\\ 
+			  	\cite{hsu2003growth} 
+			  	\end{tabular}
+			           \\ \hline
 		sq1                     & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  \\ \hline
 		sq2                     & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  & \textbf{-9}  \\ \hline
 		sq3                     & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  & \textbf{-8}  \\ \hline
