@@ -55,7 +55,7 @@ The protein structures are very complex. Detailed representation of protein exis
 
 The HP model considers two types of residues:  hydrophobic (H) residues  and hydrophilic or polar (P) residues. A protein is considered a sequence of these two types of residues, which are located in regular lattice models forming self-avoided paths. Given a pair of residues, they are considered neighbors if they are adjacent  either in the chain (connected neighbors) or  in the lattice but not connected in the chain (topological neighbors).
 
-%TODO mudar a figura um pouco para ficar diferente do original
+%TODO alterar imagem. Feito.
 \begin{figure}[htb!] \label{fig:PROTEXAM}
 	\centering
 	\includegraphics[scale=0.7]{figures/protein_example.png}
@@ -67,7 +67,6 @@ The total number of topological neighboring positions in the lattice ($z$) is ca
 
 
 For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads. Figure~\ref{fig:PROTEXAM} shows the graphical representation of a possible configuration for  the sequence  $HHHPHPPPPPH$ in a 2D space. The energy that the HP model associates with this configuration is $-1$ because there is only one $HH$ contact, arisen between the second and fifth residues.
-%TODO modificar o exemplo de cadeia
 
 
 Among many works related to the Protein Folding Problem, here are some examples of authors and the approaches that have been used to solve it.
@@ -101,6 +100,9 @@ The ant colony optimization (ACO) \cite{shmygelska2002ant, shmygelska2003improve
 
 
 What this work proposes is the use of other well-known algorithms for multi-objective problems, considering the energy minimization and minimization of the size of a conformation as objectives, to analyze and compare its results to the values found in other works considered the state of the art.
+
+
+The work of \cite{santana2008protein} describes the use of Estimation of distribution algorithms (EDAs) as an efficient evolutionary algorithm that can learn and exploit the search space regularities in the form of probabilistic dependencies.
 
 
 \section{Multi-objective Optimization} \label{sec:optimization}
@@ -175,7 +177,10 @@ At the end, after the stop criterion is reached, the algorithm returns a set of 
 \subsection{IBEA (Indicator-Based Evolutionary Algorithm)}
 
 
-In the multi-objective context, optimizing consists in finding a front with good approximation to the \textit{True Pareto Front}. However, there is no general definition about what is the \textit{True} Pareto front. This way, indicators have been used to evaluate the quality of an approximation front. The \textit{hypervolume} is an example of indicator to the evaluation and comparison of fronts.
+Although single-objective optimization problems may have a unique optimal solution, Multi-objective problems (as a rule) offer a possibly uncountable set of solutions, which when evaluated produce vectors whose components represents trade-offs in decision space \cite{van1998evolutionary}.
+
+
+In the multi-objective context, optimizing consists in finding a front with good approximation to the \textit{True Pareto Front}. However, is difficult to define what is the \textit{True} Pareto Front. This way, indicators have been used to evaluate the quality of an approximation front. The \textit{hypervolume} is an example of indicator to the evaluation and comparison of fronts.
 %TODO verificar se é correto dizer there is no general definition about what is the \textit{True} Pareto front
 
 
